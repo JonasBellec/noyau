@@ -1,13 +1,14 @@
-package com.deckard.noyau.core.model;
+package com.deckard.noyau.core.model.dungeon;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.hibernate.ogm.datastore.document.options.AssociationStorage;
 import org.hibernate.ogm.datastore.document.options.AssociationStorageType;
 import org.hibernate.ogm.datastore.document.options.MapStorage;
@@ -25,20 +26,19 @@ import org.hibernate.ogm.datastore.mongodb.options.WriteConcernType;
 @AssociationStorage(AssociationStorageType.ASSOCIATION_DOCUMENT)
 @AssociationDocumentStorage(AssociationDocumentStorageType.COLLECTION_PER_ASSOCIATION)
 @MapStorage(MapStorageType.AS_LIST)
-public class Instance {
-
-	private String id;
-	private String idDungeon;
-
-	private Map<String, Player> mapPlayer;
-
-	public Instance() {
-		mapPlayer = new HashMap<>();
-	}
+public class Dungeon {
 
 	@Id
-	@GeneratedValue(generator = "uuid")
-	@GenericGenerator(name = "uuid", strategy = "uuid2")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Type(type = "objectid")
+	private String id;
+
+	private List<String> listIdStage;
+
+	public Dungeon() {
+		listIdStage = new ArrayList<>();
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -47,4 +47,11 @@ public class Instance {
 		this.id = id;
 	}
 
+	public List<String> getListIdStage() {
+		return listIdStage;
+	}
+
+	public void setListIdStage(List<String> listIdStage) {
+		this.listIdStage = listIdStage;
+	}
 }

@@ -11,8 +11,8 @@ import javax.ws.rs.core.Response;
 import com.deckard.noyau.front.http.AbstractEndpoint;
 import com.deckard.noyau.front.service.ServiceDungeon;
 
-@Path("/dungeon")
-public class EndpointDungeon extends AbstractEndpoint {
+@Path("/stage")
+public class EndpointStage extends AbstractEndpoint {
 
 	private static final String MEDIA_TYPE = "application/json;charset=UTF-8";
 
@@ -20,10 +20,10 @@ public class EndpointDungeon extends AbstractEndpoint {
 	private ServiceDungeon serviceDungeon;
 
 	@GET
-	@Path("/{idDungeon}")
+	@Path("/{idStage}")
 	@Consumes(MEDIA_TYPE)
 	@Produces(MEDIA_TYPE)
-	public Response get(@PathParam("idDungeon") String idDungeon) {
-		return formaterReponse(serviceDungeon.readStage(idDungeon));
+	public Response get(@PathParam("idStage") String idStage) {
+		return formaterReponse(serviceDungeon.readStage(idStage));
 	}
 }

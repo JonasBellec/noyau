@@ -1,13 +1,12 @@
-package com.deckard.noyau.core.model;
-
-import java.util.HashMap;
-import java.util.Map;
+package com.deckard.noyau.core.model.dungeon;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.hibernate.ogm.datastore.document.options.AssociationStorage;
 import org.hibernate.ogm.datastore.document.options.AssociationStorageType;
 import org.hibernate.ogm.datastore.document.options.MapStorage;
@@ -25,14 +24,15 @@ import org.hibernate.ogm.datastore.mongodb.options.WriteConcernType;
 @AssociationStorage(AssociationStorageType.ASSOCIATION_DOCUMENT)
 @AssociationDocumentStorage(AssociationDocumentStorageType.COLLECTION_PER_ASSOCIATION)
 @MapStorage(MapStorageType.AS_LIST)
-public class Dungeon {
+public class Stage {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Type(type = "objectid")
 	private String id;
+	private Square[][] squares;
 
-	private Map<String, Stage> mapStage;
-
-	public Dungeon() {
-		mapStage = new HashMap<>();
+	public Stage() {
 	}
 
 	@Id
@@ -46,11 +46,11 @@ public class Dungeon {
 		this.id = id;
 	}
 
-	public Map<String, Stage> getMapStage() {
-		return mapStage;
+	public Square[][] getSquares() {
+		return squares;
 	}
 
-	public void setMapStage(Map<String, Stage> mapStage) {
-		this.mapStage = mapStage;
+	public void setSquares(Square[][] squares) {
+		this.squares = squares;
 	}
 }

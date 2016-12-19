@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import com.deckard.noyau.front.reception.ServiceRequest;
+import com.deckard.noyau.front.service.ServiceRequest;
 
 @Path("/request")
 public class EndpointRequest {
@@ -15,7 +15,7 @@ public class EndpointRequest {
 	private static final String MEDIA_TYPE = "application/json;charset=UTF-8";
 
 	@Inject
-	private ServiceRequest requestService;
+	private ServiceRequest serviceRequest;
 
 	@POST
 	@Path("")

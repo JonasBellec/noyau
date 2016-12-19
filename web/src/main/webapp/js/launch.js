@@ -1,7 +1,7 @@
 function start() {
 
 	var scope = initScope();
-	
+
 	window.addEventListener('keypress', function(evt) {
 		processKeyPress(scope, evt);
 	}, false);

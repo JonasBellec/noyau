@@ -1,6 +1,6 @@
 function drawBoard(game) {
 	game.board.clearRect(0, 0, game.config.configBoard.width, game.config.configBoard.height);
-	game.board.drawImage(, 0, 0, game.config.configBoard.width, game.config.configBoard.height);
+	game.board.drawImage(pouet, 0, 0, game.config.configBoard.width, game.config.configBoard.height);
 
 	for (i = 0; i < level.listSquare; i++) {
 		drawSquare(game, level.listSquare[i]);
@@ -9,7 +9,7 @@ function drawBoard(game) {
 
 function drawHud(game) {
 	game.hud.clearRect(0, 0, game.config.configHud.width, game.config.configHud.height);
-	game.hud.drawImage(, 0, 0, game.config.configHud.width, game.config.configHud.height);
+	game.hud.drawImage(pouet, 0, 0, game.config.configHud.width, game.config.configHud.height);
 }
 
 function drawSquare(game, square) {

@@ -18,7 +18,8 @@ function initScope() {
 function initService() {
 
 	var service = {
-		query : "http://localhost:8080/noyau/rest/board/",
+		queryStage : "http://localhost:8080/noyau/front/stage",
+		queryDungeon : "http://localhost:8080/noyau/front/dungeon",
 	};
 
 	return service;
@@ -67,9 +68,9 @@ function initGame() {
 
 	var game = {
 		idDungeon : 0,
-		idLevel : 0,
+		idStage : 0,
 		dungeon : null,
-		level : null,
+		stage : null,
 	};
 
 	return game;

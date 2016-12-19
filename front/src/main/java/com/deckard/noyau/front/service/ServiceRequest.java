@@ -1,8 +1,9 @@
-package com.deckard.noyau.front.reception;
+package com.deckard.noyau.front.service;
 
 import javax.inject.Inject;
 
-import com.deckard.noyau.core.model.Request;
+import com.deckard.noyau.core.model.instance.Request;
+import com.deckard.noyau.core.reception.WarehouseRequest;
 
 public class ServiceRequest {
 
