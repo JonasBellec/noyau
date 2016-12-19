@@ -3,7 +3,7 @@ package com.deckard.noyau.front.dungeon;
 import javax.inject.Inject;
 
 import com.deckard.noyau.core.model.Request;
-import com.deckard.noyau.front.reception.WarehouseRequest;
+import com.deckard.noyau.core.reception.WarehouseRequest;
 
 public class ServiceDungeon {
 

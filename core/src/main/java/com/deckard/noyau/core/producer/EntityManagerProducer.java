@@ -13,13 +13,23 @@ import org.hibernate.ogm.datastore.mongodb.impl.MongoDBDatastoreProvider;
 
 public class EntityManagerProducer {
 
-	@EmDungeon
+	@EmWorld
 	@Produces
-	public EntityManager createEntityManagerDungeon() {
+	public EntityManager createEntityManagerWorld() {
 
 		Map<String, Object> properties = new HashMap<String, Object>();
 		properties.put(OgmProperties.DATASTORE_PROVIDER, MongoDBDatastoreProvider.class);
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("DungeonPU", properties);
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("WorldPU", properties);
+		return emf.createEntityManager();
+	}
+
+	@EmInstance
+	@Produces
+	public EntityManager createEntityManagerInstance() {
+
+		Map<String, Object> properties = new HashMap<String, Object>();
+		properties.put(OgmProperties.DATASTORE_PROVIDER, MongoDBDatastoreProvider.class);
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("InstancePU", properties);
 		return emf.createEntityManager();
 	}
 }

@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.model;
+package com.deckard.noyau.core.model.world;
 
 public class Stage {
 	private Square[][] squares;

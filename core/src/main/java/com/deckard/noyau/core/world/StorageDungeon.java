@@ -1,7 +1,7 @@
-package com.deckard.noyau.front.dungeon;
+package com.deckard.noyau.core.world;
 
-import com.deckard.noyau.core.model.Dungeon;
-import com.deckard.noyau.core.model.Stage;
+import com.deckard.noyau.core.model.world.Dungeon;
+import com.deckard.noyau.core.model.world.Stage;
 
 public class StorageDungeon {
 

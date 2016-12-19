@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.model;
+package com.deckard.noyau.core.model.world;
 
 import java.util.HashMap;
 import java.util.Map;
