@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.reception;
+package com.deckard.noyau.core.request;
 
 import java.util.HashMap;
 import java.util.Map;

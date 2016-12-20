@@ -21,8 +21,7 @@ public class ContentRange {
 	}
 
 	/**
-	 * Construit le header Content-range Ã  partir des valeurs borneInferieure,
-	 * borneSuperieure et total
+	 * Construit le header Content-range à partir des valeurs borneInferieure, borneSuperieure et total
 	 * 
 	 * @return
 	 */
@@ -31,7 +30,7 @@ public class ContentRange {
 	}
 
 	/**
-	 * Construit le header Accepted-Range Ã  partir de la valeur acceptedRange
+	 * Construit le header Accepted-Range à partir de la valeur acceptedRange
 	 * 
 	 * @return
 	 */
@@ -73,11 +72,9 @@ public class ContentRange {
 	 */
 	public void valoriserTotalAvecImpactSurBornes(long total) {
 
-		// Attention cette mÃ©thode a Ã©tÃ© Ã©crite en partant du principe que
-		// les deux bornes ont dÃ©jÃ  modifiÃ© (ou pas) en
+		// Attention cette méthode a été écrite en partant du principe que les deux bornes ont déjà modifié (ou pas) en
 		// fonction de l'acceptedRange (voir constructeur)
-		// Si on dÃ©place cette mÃ©thode dans le builder, il faut rÃ©flÃ©chir
-		// aux impacts
+		// Si on déplace cette méthode dans le builder, il faut réfléchir aux impacts
 		this.total = total;
 
 		if (total > 0) {

@@ -24,6 +24,6 @@ public class EndpointStage extends AbstractEndpoint {
 	@Consumes(MEDIA_TYPE)
 	@Produces(MEDIA_TYPE)
 	public Response get(@PathParam("idStage") String idStage) {
-		return formaterReponse(serviceDungeon.readStage(idStage));
+		return createHttpResponse(serviceDungeon.readStage(idStage));
 	}
 }

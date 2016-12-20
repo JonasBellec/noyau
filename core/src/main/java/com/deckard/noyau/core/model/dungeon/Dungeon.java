@@ -1,6 +1,5 @@
 package com.deckard.noyau.core.model.dungeon;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -36,7 +35,6 @@ public class Dungeon {
 	private List<String> listIdStage;
 
 	public Dungeon() {
-		listIdStage = new ArrayList<>();
 	}
 
 	public String getId() {
@@ -47,10 +45,17 @@ public class Dungeon {
 		this.id = id;
 	}
 
+	/**
+	 * @return the listIdStage
+	 */
 	public List<String> getListIdStage() {
 		return listIdStage;
 	}
 
+	/**
+	 * @param listIdStage
+	 *            the listIdStage to set
+	 */
 	public void setListIdStage(List<String> listIdStage) {
 		this.listIdStage = listIdStage;
 	}

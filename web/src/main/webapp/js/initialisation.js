@@ -18,8 +18,7 @@ function initScope() {
 function initService() {
 
 	var service = {
-		queryStage : "http://localhost:8080/noyau/front/stage",
-		queryDungeon : "http://localhost:8080/noyau/front/dungeon",
+		queryStage : "http://localhost:8080/front/rest/stage/",
 	};
 
 	return service;
@@ -41,9 +40,14 @@ function initConfiguration() {
 	};
 
 	configuration.configBoard = {
-		height : 500,
-		width : 500,
+		height : 1000,
+		width : 1000,
 	};
+	
+	configuration.configHud = {
+			height : 200,
+			width : 1000,
+		};
 
 	configuration.configSquare = {
 		height : 50,
@@ -56,9 +60,11 @@ function initConfiguration() {
 function initView() {
 
 	var board = document.getElementById('board');
+	var hud = document.getElementById('hud');
 
 	var view = {
 		board : board.getContext('2d'),
+		hud : hud.getContext('2d'),
 	};
 
 	return view;
@@ -68,9 +74,9 @@ function initGame() {
 
 	var game = {
 		idDungeon : 0,
-		idStage : 0,
+		idLevel : 0,
 		dungeon : null,
-		stage : null,
+		level : null,
 	};
 
 	return game;

@@ -17,7 +17,7 @@ public class WarehouseDungeon {
 
 	@Inject
 	@EmDungeon
-	private EntityManager entityManagerWorld;
+	private EntityManager entityManagerDungeon;
 
 	private Map<String, StorageDungeon> mapDungeonStorage;
 
@@ -27,24 +27,18 @@ public class WarehouseDungeon {
 	}
 
 	public Stage getStage(String idStage) {
-		return entityManagerWorld.find(Stage.class, idStage);
+		return entityManagerDungeon.find(Stage.class, idStage);
+	}
+
+	public Dungeon getDungeon(String idDungeon) {
+		return entityManagerDungeon.find(Dungeon.class, idDungeon);
 	}
 
 	public void createDungeon(Dungeon dungeon) {
-		entityManagerWorld.persist(dungeon);
+		entityManagerDungeon.persist(dungeon);
 	}
 
-	public void loadDungeon(String idDungeon) throws Exception {
-		createDungeonStorage(idDungeon);
-	}
-
-	private void createDungeonStorage(String idDungeon) throws Exception {
-		Dungeon dungeon = entityManagerWorld.find(Dungeon.class, idDungeon);
-
-		if (dungeon != null) {
-			mapDungeonStorage.put(idDungeon, new StorageDungeon(dungeon));
-		} else {
-			throw new Exception();
-		}
+	public void createStage(Stage stage) {
+		entityManagerDungeon.persist(stage);
 	}
 }

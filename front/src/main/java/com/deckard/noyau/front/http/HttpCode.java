@@ -64,7 +64,7 @@ public enum HttpCode {
 	}
 
 	public static HttpCode fromValue(int value) {
-		for (final HttpCode httpCode : HttpCode.values()) {
+		for (HttpCode httpCode : HttpCode.values()) {
 			if (httpCode.getValue() == value) {
 				return httpCode;
 			}
