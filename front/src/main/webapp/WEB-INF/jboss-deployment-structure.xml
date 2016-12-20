@@ -1,11 +1,10 @@
-<jboss-deployment-structure>
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.1">
 	<ear-subdeployments-isolated>false</ear-subdeployments-isolated>
 
 	<deployment>
 		<dependencies>
 			<module name="org.hibernate.ogm" slot="5.0" services="export" />
-			<module name="org.hibernate.ogm.mongodb" slot="5.0"
-				services="export" />
+			<module name="org.hibernate.ogm.mongodb" slot="5.0" services="export" />
 		</dependencies>
 	</deployment>
 

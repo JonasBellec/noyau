@@ -46,4 +46,14 @@ public class AbstractService {
 
 		return result;
 	}
+
+	public ContentRange calculerContentRange(Number total) {
+		ContentRange.Builder contentRangeBuilder = new ContentRange.Builder();
+		contentRangeBuilder.acceptedRange(100);
+
+		ContentRange contentRange = contentRangeBuilder.build();
+		contentRange.valoriserTotalAvecImpactSurBornes(total.longValue());
+
+		return contentRange;
+	}
 }

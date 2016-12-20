@@ -1,12 +1,14 @@
 package com.deckard.noyau.core.dao.dungeon;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import com.deckard.noyau.core.model.dungeon.Dungeon;
 import com.deckard.noyau.core.model.dungeon.Stage;
@@ -26,8 +28,20 @@ public class WarehouseDungeon {
 		mapDungeonStorage = new HashMap<>();
 	}
 
+	public List<Stage> getStage() {
+		Query typedQuery = entityManagerDungeon.createQuery("FROM Stage");
+
+		return typedQuery.getResultList();
+	}
+
 	public Stage getStage(String idStage) {
 		return entityManagerDungeon.find(Stage.class, idStage);
+	}
+
+	public List<Dungeon> getDungeon() {
+		Query typedQuery = entityManagerDungeon.createQuery("FROM Dungeon");
+
+		return typedQuery.getResultList();
 	}
 
 	public Dungeon getDungeon(String idDungeon) {

@@ -20,6 +20,14 @@ public class EndpointStage extends AbstractEndpoint {
 	private ServiceDungeon serviceDungeon;
 
 	@GET
+	@Path("")
+	@Consumes(MEDIA_TYPE)
+	@Produces(MEDIA_TYPE)
+	public Response get() {
+		return createHttpResponse(serviceDungeon.readStage());
+	}
+
+	@GET
 	@Path("/{idStage}")
 	@Consumes(MEDIA_TYPE)
 	@Produces(MEDIA_TYPE)

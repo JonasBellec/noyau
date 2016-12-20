@@ -6,7 +6,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
@@ -24,25 +23,22 @@ public class EndpointDungeon extends AbstractEndpoint {
 
 	@HEAD
 	@Path("")
-	@Consumes(MEDIA_TYPE)
-	@Produces(MEDIA_TYPE)
-	public Response heaed() {
+	public Response head() {
 		return createHttpResponseNoElement(HttpCode.NoContent);
 	}
 
 	@GET
-	@Path("/{idStage}")
-	@Consumes(MEDIA_TYPE)
+	@Path("")
 	@Produces(MEDIA_TYPE)
-	public Response get(@PathParam("idStage") String idStage) {
-		return createHttpResponse(serviceDungeon.readStage(idStage));
+	public Response get() {
+		return createHttpResponse(serviceDungeon.readDungeon());
 	}
 
 	@POST
 	@Path("/create")
 	@Consumes(MEDIA_TYPE)
 	@Produces(MEDIA_TYPE)
-	public Response create() {
+	public Response create() throws Exception {
 		return createHttpResponse(serviceDungeon.create());
 	}
 }
