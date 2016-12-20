@@ -9,9 +9,14 @@ public class AbstractEndpoint {
 
 	private static String contentRangeNoElement = "0-0/0";
 
+	public Response createHttpResponseNoElement(HttpCode httpCode) {
+		ResponseBuilder responseBuilder = Response.status(httpCode.getValue());
+		return responseBuilder.build();
+	}
+
 	public Response createHttpResponse(Result result) {
 
-		final ResponseBuilder responseBuilder = Response.status(result.getHttpCode().getValue());
+		ResponseBuilder responseBuilder = Response.status(result.getHttpCode().getValue());
 		responseBuilder.entity(result.getEntity());
 
 		if (result.getContentRange() != null) {

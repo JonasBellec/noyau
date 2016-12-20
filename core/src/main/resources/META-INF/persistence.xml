@@ -4,12 +4,19 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
 
-	<persistence-unit name="WorldPU" transaction-type="JTA">
+	<persistence-unit name="DungeonPU" transaction-type="JTA">
 		<provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
-		<jta-data-source>java:/WorldDS</jta-data-source>
+		<jta-data-source>java:/DungeonDS</jta-data-source>
 		<properties>
 			<property name="hibernate.transaction.jta.platform" value="JBossAS" />
 			<property name="hibernate.ogm.datastore.provider" value="mongodb" />
+			<property name="hibernate.transaction.jta.platform"
+				value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+			<property name="hibernate.ogm.datastore.database" value="demomongo" />
+			<property name="hibernate.ogm.datastore.host" value="localhost" />
+			<property name="hibernate.ogm.datastore.provider" value="MONGODB" />
+			<property name="hibernate.ogm.datastore.username" value="db_user" />
+			<property name="hibernate.ogm.datastore.password" value="top_secret!" />
 		</properties>
 	</persistence-unit>
 
@@ -19,6 +26,14 @@
 		<properties>
 			<property name="hibernate.transaction.jta.platform" value="JBossAS" />
 			<property name="hibernate.ogm.datastore.provider" value="mongodb" />
+
+			<property name="hibernate.transaction.jta.platform"
+				value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform" />
+			<property name="hibernate.ogm.datastore.database" value="demomongo" />
+			<property name="hibernate.ogm.datastore.host" value="localhost" />
+			<property name="hibernate.ogm.datastore.provider" value="MONGODB" />
+			<property name="hibernate.ogm.datastore.username" value="db_user" />
+			<property name="hibernate.ogm.datastore.password" value="top_secret!" />
 		</properties>
 	</persistence-unit>
 </persistence>
