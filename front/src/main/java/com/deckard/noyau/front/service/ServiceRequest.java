@@ -1,4 +1,4 @@
-package com.deckard.noyau.front.reception;
+package com.deckard.noyau.front.service;
 
 import javax.inject.Inject;
 
