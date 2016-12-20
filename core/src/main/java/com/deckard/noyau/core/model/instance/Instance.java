@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.model.world;
+package com.deckard.noyau.core.model.instance;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -25,14 +25,15 @@ import org.hibernate.ogm.datastore.mongodb.options.WriteConcernType;
 @AssociationStorage(AssociationStorageType.ASSOCIATION_DOCUMENT)
 @AssociationDocumentStorage(AssociationDocumentStorageType.COLLECTION_PER_ASSOCIATION)
 @MapStorage(MapStorageType.AS_LIST)
-public class Dungeon {
+public class Instance {
 
 	private String id;
+	private String idDungeon;
 
-	private Map<String, Stage> mapStage;
+	private Map<String, Player> mapPlayer;
 
-	public Dungeon() {
-		mapStage = new HashMap<>();
+	public Instance() {
+		mapPlayer = new HashMap<>();
 	}
 
 	@Id
@@ -46,11 +47,4 @@ public class Dungeon {
 		this.id = id;
 	}
 
-	public Map<String, Stage> getMapStage() {
-		return mapStage;
-	}
-
-	public void setMapStage(Map<String, Stage> mapStage) {
-		this.mapStage = mapStage;
-	}
 }

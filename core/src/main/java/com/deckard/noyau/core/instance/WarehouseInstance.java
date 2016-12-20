@@ -8,8 +8,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 
-import com.deckard.noyau.core.model.world.Dungeon;
-import com.deckard.noyau.core.model.world.Stage;
+import com.deckard.noyau.core.model.dungeon.Dungeon;
+import com.deckard.noyau.core.model.dungeon.Stage;
 import com.deckard.noyau.core.producer.EmInstance;
 
 @Singleton

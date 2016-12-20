@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.world;
+package com.deckard.noyau.core.dungeon;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,27 +8,27 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 
-import com.deckard.noyau.core.model.world.Dungeon;
-import com.deckard.noyau.core.model.world.Stage;
-import com.deckard.noyau.core.producer.EmWorld;
+import com.deckard.noyau.core.model.dungeon.Dungeon;
+import com.deckard.noyau.core.model.dungeon.Stage;
+import com.deckard.noyau.core.producer.EmDungeon;
 
 @Singleton
-public class WarehouseWorld {
+public class WarehouseDungeon {
 
 	@Inject
-	@EmWorld
-	private EntityManager entityManagerWorld;
+	@EmDungeon
+	private EntityManager entityManagerDungeon;
 
-	private Map<String, StorageDungeon> mapDungeonStorage;
+	private Map<String, StorageDungeon> mapStorageDungeon;
 
 	@PostConstruct
 	public void postConstruct() {
-		mapDungeonStorage = new HashMap<>();
+		mapStorageDungeon = new HashMap<>();
 	}
 
 	public Stage getStage(String idDungeon, String idStage) {
 
-		StorageDungeon dungeonStorage = mapDungeonStorage.get(idDungeon);
+		StorageDungeon dungeonStorage = mapStorageDungeon.get(idDungeon);
 
 		if (dungeonStorage != null) {
 			return dungeonStorage.getStage(idStage);
@@ -38,7 +38,7 @@ public class WarehouseWorld {
 	}
 
 	public void createDungeon(Dungeon dungeon) {
-		entityManagerWorld.persist(dungeon);
+		entityManagerDungeon.persist(dungeon);
 	}
 
 	public void loadDungeon(String idDungeon) throws Exception {
@@ -46,10 +46,10 @@ public class WarehouseWorld {
 	}
 
 	private void createDungeonStorage(String idDungeon) throws Exception {
-		Dungeon dungeon = entityManagerWorld.find(Dungeon.class, idDungeon);
+		Dungeon dungeon = entityManagerDungeon.find(Dungeon.class, idDungeon);
 
 		if (dungeon != null) {
-			mapDungeonStorage.put(idDungeon, new StorageDungeon(dungeon));
+			mapStorageDungeon.put(idDungeon, new StorageDungeon(dungeon));
 		} else {
 			throw new Exception();
 		}

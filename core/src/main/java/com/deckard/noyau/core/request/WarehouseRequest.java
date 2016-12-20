@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.reception;
+package com.deckard.noyau.core.request;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,7 +8,7 @@ import java.util.concurrent.Executors;
 import javax.annotation.PostConstruct;
 import javax.inject.Singleton;
 
-import com.deckard.noyau.core.model.Request;
+import com.deckard.noyau.core.model.instance.Request;
 
 @Singleton
 public class WarehouseRequest {

@@ -1,6 +1,6 @@
 package com.deckard.noyau.core.instance;
 
-import com.deckard.noyau.core.model.Instance;
+import com.deckard.noyau.core.model.instance.Instance;
 
 public class StorageInstance {
 

@@ -13,7 +13,7 @@ import org.hibernate.ogm.datastore.mongodb.impl.MongoDBDatastoreProvider;
 
 public class EntityManagerProducer {
 
-	@EmWorld
+	@EmDungeon
 	@Produces
 	public EntityManager createEntityManagerWorld() {
 
