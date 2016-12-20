@@ -26,15 +26,8 @@ public class WarehouseDungeon {
 		mapStorageDungeon = new HashMap<>();
 	}
 
-	public Stage getStage(String idDungeon, String idStage) {
-
-		StorageDungeon dungeonStorage = mapStorageDungeon.get(idDungeon);
-
-		if (dungeonStorage != null) {
-			return dungeonStorage.getStage(idStage);
-		} else {
-			return null;
-		}
+	public Stage getStage(String idStage) {
+		return entityManagerDungeon.find(Stage.class, idStage);
 	}
 
 	public void createDungeon(Dungeon dungeon) {

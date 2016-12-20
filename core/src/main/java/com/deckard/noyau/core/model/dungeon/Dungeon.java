@@ -1,6 +1,21 @@
 package com.deckard.noyau.core.model.dungeon;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.ogm.datastore.document.options.AssociationStorage;
+import org.hibernate.ogm.datastore.document.options.AssociationStorageType;
+import org.hibernate.ogm.datastore.document.options.MapStorage;
+import org.hibernate.ogm.datastore.document.options.MapStorageType;
+import org.hibernate.ogm.datastore.mongodb.options.AssociationDocumentStorage;
+import org.hibernate.ogm.datastore.mongodb.options.AssociationDocumentStorageType;
+import org.hibernate.ogm.datastore.mongodb.options.ReadPreference;
+import org.hibernate.ogm.datastore.mongodb.options.ReadPreferenceType;
+import org.hibernate.ogm.datastore.mongodb.options.WriteConcern;
+import org.hibernate.ogm.datastore.mongodb.options.WriteConcernType;
 
 @Entity
 @WriteConcern(WriteConcernType.JOURNALED)
@@ -11,8 +26,8 @@ package com.deckard.noyau.core.model.dungeon;
 public class Dungeon {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Type(type = "objectid")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Type(type = "objectid")
 	private String id;
 
 	public Dungeon() {

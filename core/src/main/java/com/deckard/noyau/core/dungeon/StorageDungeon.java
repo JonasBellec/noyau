@@ -10,8 +10,4 @@ public class StorageDungeon {
 	public StorageDungeon(Dungeon dungeon) {
 		this.dungeon = dungeon;
 	}
-
-	public Stage getStage(String idStage) {
-		return dungeon.getMapStage().get(idStage);
-	}
 }
