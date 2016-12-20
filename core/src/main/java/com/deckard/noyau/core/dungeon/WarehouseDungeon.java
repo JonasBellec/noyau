@@ -1,8 +1,5 @@
 package com.deckard.noyau.core.dungeon;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -19,11 +16,12 @@ public class WarehouseDungeon {
 	@EmDungeon
 	private EntityManager entityManagerDungeon;
 
-	private Map<String, StorageDungeon> mapStorageDungeon;
-
 	@PostConstruct
 	public void postConstruct() {
-		mapStorageDungeon = new HashMap<>();
+	}
+
+	public Dungeon getDungeon(String idDungeon) {
+		return entityManagerDungeon.find(Dungeon.class, idDungeon);
 	}
 
 	public Stage getStage(String idStage) {
@@ -34,17 +32,7 @@ public class WarehouseDungeon {
 		entityManagerDungeon.persist(dungeon);
 	}
 
-	public void loadDungeon(String idDungeon) throws Exception {
-		createDungeonStorage(idDungeon);
-	}
-
-	private void createDungeonStorage(String idDungeon) throws Exception {
-		Dungeon dungeon = entityManagerDungeon.find(Dungeon.class, idDungeon);
-
-		if (dungeon != null) {
-			mapStorageDungeon.put(idDungeon, new StorageDungeon(dungeon));
-		} else {
-			throw new Exception();
-		}
+	public void createStage(Stage stage) {
+		entityManagerDungeon.persist(stage);
 	}
 }

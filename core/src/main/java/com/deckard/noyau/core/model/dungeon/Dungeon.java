@@ -1,5 +1,7 @@
 package com.deckard.noyau.core.model.dungeon;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -30,6 +32,8 @@ public class Dungeon {
 	@Type(type = "objectid")
 	private String id;
 
+	private List<String> listIdStage;
+
 	public Dungeon() {
 	}
 
@@ -39,5 +43,20 @@ public class Dungeon {
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	/**
+	 * @return the listIdStage
+	 */
+	public List<String> getListIdStage() {
+		return listIdStage;
+	}
+
+	/**
+	 * @param listIdStage
+	 *            the listIdStage to set
+	 */
+	public void setListIdStage(List<String> listIdStage) {
+		this.listIdStage = listIdStage;
 	}
 }

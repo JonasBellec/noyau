@@ -7,7 +7,7 @@ function start() {
 	}, false);
 
 	loadStaticData(scope, function() {
-		if (scope.isReady == true) {
+		if (scope.isReady) {
 			launch(scope);
 		}
 	});
@@ -16,6 +16,7 @@ function start() {
 function loadStaticData(scope, callback) {
 	loadAssets(scope, callback);
 	loadConfiguration(scope, callback);
+	loadDungeon(scope, callback);
 }
 
 function launch(scope) {
@@ -31,15 +32,16 @@ function launch(scope) {
 
 	var speed = 0.1;
 
-	drawBoard(scope.game);
-	drawHud(scope.game);
-
 	setTimeout(function() {
 		var startTime = (new Date()).getTime();
-		refresh(game, startTime, speed);
+		refresh(scope, startTime, speed);
 	}, 100);
 }
 
 function processKeyPress(scope, evt) {
 
+}
+
+function refresh(scope, startTime, speed){
+	drawView(scope);
 }
