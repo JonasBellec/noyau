@@ -13,6 +13,8 @@ function initScope() {
 	scope.configuration = initConfiguration();
 	scope.view = initView();
 	scope.game = initGame();
+	
+	return scope;
 }
 
 function initService() {
@@ -40,7 +42,7 @@ function initConfiguration() {
 	};
 
 	configuration.configBoard = {
-		height : 1000,
+		height : 500,
 		width : 1000,
 	};
 	

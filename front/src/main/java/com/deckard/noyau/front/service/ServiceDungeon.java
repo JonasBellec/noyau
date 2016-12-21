@@ -7,6 +7,7 @@ import javax.transaction.TransactionManager;
 
 import com.deckard.noyau.core.dao.dungeon.WarehouseDungeon;
 import com.deckard.noyau.core.model.dungeon.Dungeon;
+import com.deckard.noyau.core.model.dungeon.Square;
 import com.deckard.noyau.core.model.dungeon.Stage;
 import com.deckard.noyau.front.http.AbstractService;
 import com.deckard.noyau.front.http.ContentRange;
@@ -50,9 +51,22 @@ public class ServiceDungeon extends AbstractService {
 		for (int i = 0; i < 10; i++) {
 			Stage stage = new Stage();
 			stage.setTitle(String.valueOf(i));
+
+			for (int j = 0; j < 10; j++) {
+				for (int k = 0; k < 10; k++) {
+					Square square = new Square();
+					square.setSquareType(1);
+					square.setX(j);
+					square.setY(k);
+
+					stage.getListSquare().add(square);
+				}
+			}
+
 			warehouseDungeon.createStage(stage);
 
-			// dungeon.getListIdStage().add(stage.getId());
+			dungeon.getListIdStage().add(stage.getId());
+
 		}
 
 		warehouseDungeon.createDungeon(dungeon);

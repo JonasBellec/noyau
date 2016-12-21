@@ -12,7 +12,7 @@ function drawHud(hud, configHud, dungeon) {
 	hud.clearRect(0, 0, configHud.width, configHud.height);
 	
 	for (var i = 0, n = dungeon.listIdStage.length; i < n; i++) {
-		hud.fillText(dungeon.listIdStage[i], 0, 20*y);
+		hud.fillText(dungeon.listIdStage[i], 0, 20*i);
 	}
 	
 	
