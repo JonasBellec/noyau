@@ -27,6 +27,7 @@
 		<provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
 
 		<class>com.deckard.noyau.core.model.dungeon.Instance</class>
+<<<<<<< Upstream, based on origin/master
 		<class>com.deckard.noyau.core.model.dungeon.Player</class>
 
 		<properties>
@@ -37,6 +38,36 @@
 			<property name="hibernate.ogm.datastore.port" value="27017" />
 			<property name="hibernate.ogm.datastore.provider" value="mongodb" />
 			<property name="hibernate.ogm.datastore.database" value="instance" />
+=======
+
+		<properties>
+			<property name="hibernate.transaction.jta.platform"
+				value="org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform" />
+
+			<property name="hibernate.ogm.datastore.host" value="localhost" />
+			<property name="hibernate.ogm.datastore.port" value="27017" />
+			<property name="hibernate.ogm.datastore.provider" value="mongodb" />
+			<property name="hibernate.ogm.datastore.database" value="instance" />
+			<property name="hibernate.ogm.datastore.create_database"
+				value="true" />
+		</properties>
+	</persistence-unit>
+
+	<persistence-unit name="AdministrationPU"
+		transaction-type="JTA">
+		<provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+
+		<class>com.deckard.noyau.core.model.administration.Player</class>
+
+		<properties>
+			<property name="hibernate.transaction.jta.platform"
+				value="org.hibernate.service.jta.platform.internal.JBossStandAloneJtaPlatform" />
+
+			<property name="hibernate.ogm.datastore.host" value="localhost" />
+			<property name="hibernate.ogm.datastore.port" value="27017" />
+			<property name="hibernate.ogm.datastore.provider" value="mongodb" />
+			<property name="hibernate.ogm.datastore.database" value="administration" />
+>>>>>>> c2ccf0d Sprint 2 : Affichage du stage
 			<property name="hibernate.ogm.datastore.create_database"
 				value="true" />
 		</properties>

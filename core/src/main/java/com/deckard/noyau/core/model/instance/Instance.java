@@ -1,7 +1,7 @@
 package com.deckard.noyau.core.model.instance;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -18,15 +18,26 @@ public class Instance {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Type(type = "objectid")
 	private String id;
+<<<<<<< Upstream, based on origin/master
+=======
 
+	@ElementCollection
+	private List<String> listIdPlayer;
+
+	private String idDungeon;
+>>>>>>> c2ccf0d Sprint 2 : Affichage du stage
+
+<<<<<<< Upstream, based on origin/master
 	@ElementCollection
 	private Map<String, Player> mapPlayer;
 
 	private String idDungeon;
 	private String idStage;
 
+=======
+>>>>>>> c2ccf0d Sprint 2 : Affichage du stage
 	public Instance() {
-		mapPlayer = new HashMap<>();
+		listIdPlayer = new ArrayList<>();
 	}
 
 	/**
@@ -45,6 +56,7 @@ public class Instance {
 	}
 
 	/**
+<<<<<<< Upstream, based on origin/master
 	 * @return the idDungeon
 	 */
 	public String getIdDungeon() {
@@ -87,5 +99,34 @@ public class Instance {
 	 */
 	public void setIdStage(String idStage) {
 		this.idStage = idStage;
+=======
+	 * @return the listIdPlayer
+	 */
+	public List<String> getListIdPlayer() {
+		return listIdPlayer;
+	}
+
+	/**
+	 * @param listIdPlayer
+	 *            the listIdPlayer to set
+	 */
+	public void setListIdPlayer(List<String> listIdPlayer) {
+		this.listIdPlayer = listIdPlayer;
+	}
+
+	/**
+	 * @return the idDungeon
+	 */
+	public String getIdDungeon() {
+		return idDungeon;
+	}
+
+	/**
+	 * @param idDungeon
+	 *            the idDungeon to set
+	 */
+	public void setIdDungeon(String idDungeon) {
+		this.idDungeon = idDungeon;
+>>>>>>> c2ccf0d Sprint 2 : Affichage du stage
 	}
 }
