@@ -3,7 +3,6 @@ package com.deckard.noyau.core.model.dungeon;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,7 +19,6 @@ public class Dungeon {
 	@Type(type = "objectid")
 	private String id;
 
-	@Column
 	@ElementCollection
 	private List<String> listIdStage;
 

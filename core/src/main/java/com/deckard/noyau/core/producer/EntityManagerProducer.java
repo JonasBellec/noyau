@@ -19,13 +19,12 @@ public class EntityManagerProducer {
 		return emf.createEntityManager();
 	}
 
-	// @EmInstance
-	// @Produces
-	// public EntityManager createEntityManagerInstance() {
-	//
-	// Map<String, Object> properties = new HashMap<String, Object>();
-	// properties.put(OgmProperties.DATASTORE_PROVIDER, MongoDBDatastoreProvider.class);
-	// EntityManagerFactory emf = Persistence.createEntityManagerFactory("InstancePU", properties);
-	// return emf.createEntityManager();
-	// }
+	@EmInstance
+	@Produces
+	public EntityManager createEntityManagerInstance() {
+
+		Map<String, Object> properties = new HashMap<String, Object>();
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("InstancePU", properties);
+		return emf.createEntityManager();
+	}
 }
