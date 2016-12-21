@@ -11,16 +11,32 @@ function loadDungeon(scope, callback) {
 		url : 'http://localhost:8080/front/rest/dungeon/',
 		type : 'GET',
 		data : '',
-		headers: {  
-            "Content-Type": "application/json;charset=UTF-8"  
-        }
-	}).success ( function(result,status,xhr) {
+		headers : {
+			"Content-Type" : "application/json;charset=UTF-8"
+		}
+	}).success(function(result, status, xhr) {
 		scope.game.dungeon = result[0];
-		scope.isReady = true;
+
+		if (scope.game.dungeon != null && scope.game.stage != null) {
+			scope.isReady = true;
+		}
 		callback();
 	});
 }
 
 function loadStage(scope, callback) {
-
+	$.ajax({
+		url : 'http://localhost:8080/front/rest/stage/',
+		type : 'GET',
+		data : '',
+		headers : {
+			"Content-Type" : "application/json;charset=UTF-8"
+		}
+	}).success(function(result, status, xhr) {
+		scope.game.stage = result[0];
+		if (scope.game.dungeon != null && scope.game.stage != null) {
+			scope.isReady = true;
+		}
+		callback();
+	});
 }
