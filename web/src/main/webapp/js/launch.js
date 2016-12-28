@@ -7,9 +7,7 @@ function start() {
 	}, false);
 
 	loadStaticData(scope, function() {
-		if (scope.isReady) {
-			launch(scope);
-		}
+		launch(scope);
 	});
 }
 
@@ -24,11 +22,8 @@ function launch(scope) {
 				};
 	})();
 
-	var speed = 0.1;
-
 	setTimeout(function() {
-		var startTime = (new Date()).getTime();
-		refresh(scope, startTime, speed);
+		refresh(scope);
 	}, 100);
 }
 
@@ -36,6 +31,6 @@ function processKeyPress(scope, evt) {
 
 }
 
-function refresh(scope, startTime, speed){
+function refresh(scope) {
 	drawView(scope);
 }

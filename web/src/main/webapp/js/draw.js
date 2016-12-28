@@ -1,12 +1,16 @@
 function drawView(scope) {
-	drawBoard(scope.view.board, scope.configuration.configBoard,
-			scope.game.stage);
+	drawBoard(scope.view.board, scope.configuration.configBoard, scope.game);
 	drawHud(scope.view.hud, scope.configuration.configHud, scope.game.dungeon);
 }
 
-function drawBoard(board, configBoard, stage) {
+function drawBoard(board, configBoard, game) {
 	board.clearRect(0, 0, configBoard.width, configBoard.height);
 
+	drawSquare(board, game.stage);
+	drawPlayer(board, game.instance);
+}
+
+function drawSquare(board, stage) {
 	for (var i = 0, n = stage.listSquare.length; i < n; i++) {
 		var x = stage.listSquare[i].x;
 		var y = stage.listSquare[i].y;
@@ -17,6 +21,16 @@ function drawBoard(board, configBoard, stage) {
 			board.fillStyle = "#00FF00";
 		}
 		board.fillRect(50 * x, 50 * y, 50, 50);
+	}
+}
+
+function drawPlayer(board, instance) {
+	for (var i = 0, n = instance.listPlayer.length; i < n; i++) {
+		var x = instance.listPlayer[i].x;
+		var y = instance.listPlayer[i].y;
+
+		board.fillStyle = "#0000FF";
+		board.fillRect(50 * x + 10, 50 * y + 10, 30, 30);
 	}
 }
 

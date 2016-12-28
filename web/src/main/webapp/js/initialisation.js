@@ -1,6 +1,5 @@
 function initScope() {
 	var scope = {
-		service : null,
 		assets : null,
 		configuration : null,
 
@@ -8,22 +7,12 @@ function initScope() {
 		game : null,
 	}
 
-	scope.service = initService();
 	scope.assets = initAssets();
 	scope.configuration = initConfiguration();
 	scope.view = initView();
 	scope.game = initGame();
 	
 	return scope;
-}
-
-function initService() {
-
-	var service = {
-		queryStage : "http://localhost:8080/front/rest/stage/",
-	};
-
-	return service;
 }
 
 function initAssets() {
@@ -75,10 +64,9 @@ function initView() {
 function initGame() {
 
 	var game = {
-		idDungeon : 0,
-		idStage : 0,
 		dungeon : null,
 		stage : null,
+		instance : null,
 	};
 
 	return game;
