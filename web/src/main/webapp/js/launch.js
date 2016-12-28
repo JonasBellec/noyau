@@ -13,13 +13,6 @@ function start() {
 	});
 }
 
-function loadStaticData(scope, callback) {
-	loadAssets(scope, callback);
-	loadConfiguration(scope, callback);
-	loadDungeon(scope, callback);
-	loadStage(scope, callback);
-}
-
 function launch(scope) {
 	window.requestAnimFrame = (function(callback) {
 		return window.requestAnimationFrame

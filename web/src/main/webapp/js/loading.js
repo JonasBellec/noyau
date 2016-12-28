@@ -1,9 +1,19 @@
+function loadStaticData(scope, callback) {
+	loadAssets(scope, callback);
+	loadConfiguration(scope, callback);
+}
+
 function loadAssets(scope, callback) {
 
 }
 
 function loadConfiguration(scope, callback) {
 
+}
+
+function loadDynamicData(scope, callback) {
+	loadDungeon(scope, callback);
+	loadStage(scope, callback);
 }
 
 function loadDungeon(scope, callback) {

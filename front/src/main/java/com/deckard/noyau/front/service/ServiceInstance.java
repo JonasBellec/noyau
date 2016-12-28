@@ -15,11 +15,8 @@ public class ServiceInstance extends AbstractService {
 	public Result readInstance(String idInstance) {
 		return createResultOneElement(HttpCode.OK, warehouseInstance.getInstance(idInstance));
 	}
-<<<<<<< Upstream, based on origin/master
-=======
 
 	public Result createInstance() {
 		return createResultOneElement(HttpCode.OK, warehouseInstance.createInstance());
 	}
->>>>>>> c2ccf0d Sprint 2 : Affichage du stage
 }
