@@ -1,5 +1,6 @@
 package com.deckard.noyau.core.model.instance;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.ElementCollection;
@@ -19,9 +20,13 @@ public class Instance {
 	private String id;
 
 	@ElementCollection
-	private List<String> listIdPlayer;
+	private List<Persona> listPersona;
 
 	private String idDungeon;
+
+	public Instance() {
+		listPersona = new ArrayList<>();
+	}
 
 	/**
 	 * @return the id
@@ -39,18 +44,18 @@ public class Instance {
 	}
 
 	/**
-	 * @return the listIdPlayer
+	 * @return the listPersona
 	 */
-	public List<String> getListIdPlayer() {
-		return listIdPlayer;
+	public List<Persona> getListPersona() {
+		return listPersona;
 	}
 
 	/**
-	 * @param listIdPlayer
-	 *            the listIdPlayer to set
+	 * @param listPersona
+	 *            the listPersona to set
 	 */
-	public void setListIdPlayer(List<String> listIdPlayer) {
-		this.listIdPlayer = listIdPlayer;
+	public void setListPersona(List<Persona> listPersona) {
+		this.listPersona = listPersona;
 	}
 
 	/**

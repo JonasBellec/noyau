@@ -6,13 +6,13 @@ import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 
 import com.deckard.noyau.core.model.administration.Player;
-import com.deckard.noyau.core.producer.EmDungeon;
+import com.deckard.noyau.core.producer.EmAdministration;
 
 @Singleton
 public class WarehouseAdministration {
 
 	@Inject
-	@EmDungeon
+	@EmAdministration
 	private EntityManager entityManagerAdministration;
 
 	@PostConstruct

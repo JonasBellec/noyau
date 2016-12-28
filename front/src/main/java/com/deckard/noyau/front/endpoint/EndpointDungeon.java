@@ -6,6 +6,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.HEAD;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
@@ -28,10 +29,10 @@ public class EndpointDungeon extends AbstractEndpoint {
 	}
 
 	@GET
-	@Path("")
+	@Path("{idDungeon}")
 	@Produces(MEDIA_TYPE)
-	public Response get() {
-		return createHttpResponse(serviceDungeon.readDungeon());
+	public Response get(@PathParam("idDungeon") String idDungeon) {
+		return createHttpResponse(serviceDungeon.getDungeon(idDungeon));
 	}
 
 	@POST

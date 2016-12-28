@@ -19,16 +19,8 @@ public class ServiceDungeon extends AbstractService {
 	@Inject
 	private WarehouseDungeon warehouseDungeon;
 
-	public Result readDungeon(String idDungeon) {
+	public Result getDungeon(String idDungeon) {
 		return createResultOneElement(HttpCode.OK, warehouseDungeon.getDungeon(idDungeon));
-	}
-
-	public Result readDungeon() {
-
-		List<Dungeon> listeEntites = warehouseDungeon.getDungeon();
-		ContentRange contentRange = calculerContentRange(listeEntites.size());
-
-		return createResult(HttpCode.OK, listeEntites, contentRange);
 	}
 
 	public Result readStage(String idStage) {

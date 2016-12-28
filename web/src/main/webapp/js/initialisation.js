@@ -30,21 +30,6 @@ function initConfiguration() {
 		configSquare : null,
 	};
 
-	configuration.configBoard = {
-		height : 500,
-		width : 1000,
-	};
-	
-	configuration.configHud = {
-			height : 200,
-			width : 1000,
-		};
-
-	configuration.configSquare = {
-		height : 50,
-		width : 50,
-	};
-
 	return configuration;
 }
 

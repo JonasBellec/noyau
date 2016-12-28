@@ -32,5 +32,7 @@ function processKeyPress(scope, evt) {
 }
 
 function refresh(scope) {
-	drawView(scope);
+	loadDynamicData(scope, function() {
+		drawView(scope);
+	});
 }

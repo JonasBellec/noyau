@@ -25,9 +25,9 @@ function drawSquare(board, stage) {
 }
 
 function drawPlayer(board, instance) {
-	for (var i = 0, n = instance.listPlayer.length; i < n; i++) {
-		var x = instance.listPlayer[i].x;
-		var y = instance.listPlayer[i].y;
+	for (var i = 0, n = instance.listPersona.length; i < n; i++) {
+		var x = instance.listPersona[i].x;
+		var y = instance.listPersona[i].y;
 
 		board.fillStyle = "#0000FF";
 		board.fillRect(50 * x + 10, 50 * y + 10, 30, 30);
