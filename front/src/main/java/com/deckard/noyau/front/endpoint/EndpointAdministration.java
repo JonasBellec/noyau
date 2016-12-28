@@ -2,7 +2,7 @@ package com.deckard.noyau.front.endpoint;
 
 import javax.ws.rs.Path;
 
-import com.deckard.noyau.front.http.AbstractEndpoint;
+import com.deckard.noyau.core.http.AbstractEndpoint;
 
 @Path("/administration")
 public class EndpointAdministration extends AbstractEndpoint {

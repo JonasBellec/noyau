@@ -1,4 +1,4 @@
-package com.deckard.noyau.front.http;
+package com.deckard.noyau.core.http;
 
 import java.util.Map.Entry;
 

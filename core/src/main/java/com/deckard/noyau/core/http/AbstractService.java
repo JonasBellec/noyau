@@ -1,4 +1,4 @@
-package com.deckard.noyau.front.http;
+package com.deckard.noyau.core.http;
 
 public class AbstractService {
 

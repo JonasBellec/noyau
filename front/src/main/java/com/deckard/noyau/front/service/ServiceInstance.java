@@ -5,11 +5,11 @@ import javax.inject.Inject;
 import com.deckard.noyau.core.dao.administration.WarehouseAdministration;
 import com.deckard.noyau.core.dao.dungeon.WarehouseDungeon;
 import com.deckard.noyau.core.dao.instance.WarehouseInstance;
+import com.deckard.noyau.core.http.AbstractService;
+import com.deckard.noyau.core.http.HttpCode;
+import com.deckard.noyau.core.http.Result;
 import com.deckard.noyau.core.model.administration.Player;
 import com.deckard.noyau.core.model.dungeon.Dungeon;
-import com.deckard.noyau.front.http.AbstractService;
-import com.deckard.noyau.front.http.HttpCode;
-import com.deckard.noyau.front.http.Result;
 
 public class ServiceInstance extends AbstractService {
 

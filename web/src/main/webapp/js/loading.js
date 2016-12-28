@@ -10,15 +10,10 @@ function loadStaticData(scope, callback) {
 		}
 	});
 	
-	createInstance(scope, function() {
-		if (isStaticDataReady(scope)) {
-			callback();
-		}
-	});
 }
 
 function isStaticDataReady(scope) {
-	return scope.game.instance != null && scope.assets != null && scope.configuration != null;
+	return scope.assets != null && scope.configuration != null;
 }
 
 function loadAssets(scope, callback) {
@@ -46,20 +41,6 @@ function loadConfiguration(scope, callback) {
 	callback();
 }
 
-function loadDynamicData(scope, callback) {
-	loadDungeon(scope, function() {
-		loadStage(scope, function() {
-			if (isDynamicDataReady(scope)) {
-				callback();
-			}
-		});
-	});
-}
-
-function isDynamicDataReady(scope) {
-	return scope.game.dungeon != null && scope.game.stage != null;
-}
-
 function createInstance(scope, callback) {
 	post('instance/create', '', function(result) {
 		scope.game.instance = result;
@@ -77,6 +58,13 @@ function loadDungeon(scope, callback) {
 function loadStage(scope, callback) {
 	get('stage', scope.game.dungeon.listIdStage[0], function(result) {
 		scope.game.stage = result;
+		callback();
+	})
+}
+
+function loadInstance(scope, callback) {
+	get('instance', scope.game.instance.id, function(result) {
+		scope.game.instance = result;
 		callback();
 	})
 }

@@ -6,13 +6,13 @@ import javax.inject.Inject;
 import javax.transaction.TransactionManager;
 
 import com.deckard.noyau.core.dao.dungeon.WarehouseDungeon;
+import com.deckard.noyau.core.http.AbstractService;
+import com.deckard.noyau.core.http.ContentRange;
+import com.deckard.noyau.core.http.HttpCode;
+import com.deckard.noyau.core.http.Result;
 import com.deckard.noyau.core.model.dungeon.Dungeon;
 import com.deckard.noyau.core.model.dungeon.Square;
 import com.deckard.noyau.core.model.dungeon.Stage;
-import com.deckard.noyau.front.http.AbstractService;
-import com.deckard.noyau.front.http.ContentRange;
-import com.deckard.noyau.front.http.HttpCode;
-import com.deckard.noyau.front.http.Result;
 
 public class ServiceDungeon extends AbstractService {
 

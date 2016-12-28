@@ -8,7 +8,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
-import com.deckard.noyau.front.http.AbstractEndpoint;
+import com.deckard.noyau.core.http.AbstractEndpoint;
 import com.deckard.noyau.front.service.ServiceDungeon;
 
 @Path("/stage")

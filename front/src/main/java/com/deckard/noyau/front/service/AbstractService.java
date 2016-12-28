@@ -1,8 +1,8 @@
 package com.deckard.noyau.front.service;
 
-import com.deckard.noyau.front.http.ContentRange;
-import com.deckard.noyau.front.http.HttpCode;
-import com.deckard.noyau.front.http.Result;
+import com.deckard.noyau.core.http.ContentRange;
+import com.deckard.noyau.core.http.HttpCode;
+import com.deckard.noyau.core.http.Result;
 
 public class AbstractService {
 

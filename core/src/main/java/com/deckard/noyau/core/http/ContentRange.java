@@ -1,4 +1,4 @@
-package com.deckard.noyau.front.http;
+package com.deckard.noyau.core.http;
 
 public class ContentRange {
 	private int acceptedRange;
@@ -21,7 +21,7 @@ public class ContentRange {
 	}
 
 	/**
-	 * Construit le header Content-range à partir des valeurs borneInferieure, borneSuperieure et total
+	 * Construit le header Content-range ï¿½ partir des valeurs borneInferieure, borneSuperieure et total
 	 * 
 	 * @return
 	 */
@@ -30,7 +30,7 @@ public class ContentRange {
 	}
 
 	/**
-	 * Construit le header Accepted-Range à partir de la valeur acceptedRange
+	 * Construit le header Accepted-Range ï¿½ partir de la valeur acceptedRange
 	 * 
 	 * @return
 	 */
@@ -72,9 +72,9 @@ public class ContentRange {
 	 */
 	public void valoriserTotalAvecImpactSurBornes(long total) {
 
-		// Attention cette méthode a été écrite en partant du principe que les deux bornes ont déjà modifié (ou pas) en
+		// Attention cette mï¿½thode a ï¿½tï¿½ ï¿½crite en partant du principe que les deux bornes ont dï¿½jï¿½ modifiï¿½ (ou pas) en
 		// fonction de l'acceptedRange (voir constructeur)
-		// Si on déplace cette méthode dans le builder, il faut réfléchir aux impacts
+		// Si on dï¿½place cette mï¿½thode dans le builder, il faut rï¿½flï¿½chir aux impacts
 		this.total = total;
 
 		if (total > 0) {

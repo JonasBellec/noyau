@@ -7,32 +7,51 @@ function start() {
 	}, false);
 
 	loadStaticData(scope, function() {
-		launch(scope);
+		prepareGame(scope);
+	});
+}
+
+function prepareGame(scope) {
+	createInstance(scope, function() {
+		loadDungeon(scope, function() {
+			loadStage(scope, function() {
+				launch(scope)
+			});
+		});
 	});
 }
 
 function launch(scope) {
 	window.requestAnimFrame = (function(callback) {
-		return window.requestAnimationFrame
-				|| window.webkitRequestAnimationFrame
-				|| window.mozRequestAnimationFrame
-				|| window.oRequestAnimationFrame
-				|| window.msRequestAnimationFrame || function(callback) {
+		return window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame
+				|| window.oRequestAnimationFrame || window.msRequestAnimationFrame || function(callback) {
 					window.setTimeout(callback, 1000 / 60);
 				};
 	})();
 
 	setTimeout(function() {
-		refresh(scope);
+		refreshView(scope);
 	}, 100);
+	
+	setTimeout(function() {
+		refreshInstance(scope);
+	}, 250);
 }
 
 function processKeyPress(scope, evt) {
 
 }
 
-function refresh(scope) {
-	loadDynamicData(scope, function() {
-		drawView(scope);
+function refreshView(scope) {
+	requestAnimFrame(function() {
+		refreshView(scope);
+	});
+}
+
+function refreshInstance(scope) {
+	loadInstance(scope, function() {
+		setTimeout(function() {
+			refreshInstance(scope);
+		}, 250);
 	});
 }
