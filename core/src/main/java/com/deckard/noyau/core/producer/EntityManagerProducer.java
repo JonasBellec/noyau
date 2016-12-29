@@ -33,4 +33,12 @@ public class EntityManagerProducer {
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdministrationPU", properties);
 		return emf.createEntityManager();
 	}
+
+	@EmRequest
+	@Produces
+	public EntityManager createEntityManagerRequest() {
+		Map<String, Object> properties = new HashMap<>();
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdministrationPU", properties);
+		return emf.createEntityManager();
+	}
 }
