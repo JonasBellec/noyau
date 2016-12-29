@@ -1,8 +1,5 @@
 package com.deckard.noyau.core.model.dungeon;
 
-import javax.persistence.Embeddable;
-
-@Embeddable
 public class Square {
 
 	private Integer squareType;

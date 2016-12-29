@@ -3,23 +3,24 @@ package com.deckard.noyau.core.dao.administration;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.persistence.EntityManager;
+
+import org.mongodb.morphia.Datastore;
 
 import com.deckard.noyau.core.model.administration.Player;
-import com.deckard.noyau.core.producer.EmAdministration;
+import com.deckard.noyau.core.producer.DatastoreAdministration;
 
 @Singleton
 public class WarehouseAdministration {
 
 	@Inject
-	@EmAdministration
-	private EntityManager entityManagerAdministration;
+	@DatastoreAdministration
+	private Datastore datastoreAdministration;
 
 	@PostConstruct
 	public void postConstruct() {
 	}
 
 	public Player getPlayer(String idPlayer) {
-		return entityManagerAdministration.find(Player.class, idPlayer);
+		return datastoreAdministration.get(Player.class, idPlayer);
 	}
 }

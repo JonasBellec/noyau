@@ -1,58 +1,50 @@
 package com.deckard.noyau.core.dao.dungeon;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.persistence.EntityManager;
-import javax.persistence.Query;
+
+import org.mongodb.morphia.Datastore;
 
 import com.deckard.noyau.core.model.dungeon.Dungeon;
 import com.deckard.noyau.core.model.dungeon.Stage;
-import com.deckard.noyau.core.producer.EmDungeon;
+import com.deckard.noyau.core.producer.DatastoreDungeon;
+import com.deckard.noyau.core.util.Util;
 
 @Singleton
 public class WarehouseDungeon {
 
 	@Inject
-	@EmDungeon
-	private EntityManager entityManagerDungeon;
-
-	private Map<String, StorageDungeon> mapDungeonStorage;
+	@DatastoreDungeon
+	private Datastore datastoreDungeon;
 
 	@PostConstruct
 	public void postConstruct() {
-		mapDungeonStorage = new HashMap<>();
-	}
-
-	public List<Stage> getStage() {
-		Query typedQuery = entityManagerDungeon.createQuery("FROM Stage");
-
-		return typedQuery.getResultList();
 	}
 
 	public Stage getStage(String idStage) {
-		return entityManagerDungeon.find(Stage.class, idStage);
-	}
-
-	public List<Dungeon> getDungeon() {
-		Query typedQuery = entityManagerDungeon.createQuery("FROM Dungeon");
-
-		return typedQuery.getResultList();
+		return datastoreDungeon.get(Stage.class, idStage);
 	}
 
 	public Dungeon getDungeon(String idDungeon) {
-		return entityManagerDungeon.find(Dungeon.class, idDungeon);
+		return datastoreDungeon.get(Dungeon.class, idDungeon);
 	}
 
-	public void createDungeon(Dungeon dungeon) {
-		entityManagerDungeon.persist(dungeon);
+	public void saveDungeon(Dungeon dungeon) {
+		if (dungeon.getId() == null) {
+			dungeon.setId(Util.generateUuid());
+			datastoreDungeon.save(dungeon);
+		} else {
+			throw new RuntimeException();
+		}
 	}
 
-	public void createStage(Stage stage) {
-		entityManagerDungeon.persist(stage);
+	public void saveStage(Stage stage) {
+		if (stage.getId() == null) {
+			stage.setId(Util.generateUuid());
+			datastoreDungeon.save(stage);
+		} else {
+			throw new RuntimeException();
+		}
 	}
 }

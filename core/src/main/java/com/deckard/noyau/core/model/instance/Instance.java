@@ -3,26 +3,23 @@ package com.deckard.noyau.core.model.instance;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Property;
 
-import org.hibernate.annotations.Type;
-
-@Entity
+@Entity(value = "instance")
 public class Instance {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Type(type = "objectid")
+	@Property(value = "_id")
 	private String id;
 
-	@ElementCollection
-	private List<Persona> listPersona;
-
+	@Property(value = "idDungeon")
 	private String idDungeon;
+
+	@Embedded(value = "listPersona")
+	private List<Persona> listPersona;
 
 	public Instance() {
 		listPersona = new ArrayList<>();

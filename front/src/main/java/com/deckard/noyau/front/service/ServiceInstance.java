@@ -6,8 +6,6 @@ import com.deckard.noyau.core.dao.instance.WarehouseInstance;
 import com.deckard.noyau.core.http.AbstractService;
 import com.deckard.noyau.core.http.HttpCode;
 import com.deckard.noyau.core.http.Result;
-import com.deckard.noyau.core.model.administration.Player;
-import com.deckard.noyau.core.model.dungeon.Dungeon;
 
 public class ServiceInstance extends AbstractService {
 
@@ -20,13 +18,13 @@ public class ServiceInstance extends AbstractService {
 
 	public Result createInstance(String idPlayer, String idDungeon) {
 
-		Player player = warehouseAdministration.getPlayer(idPlayer);
-		Dungeon dungeon = warehouseDungeon.getDungeon(idDungeon);
-
-		if (player != null && dungeon != null) {
-			return createResultOneElement(HttpCode.OK, warehouseInstance.createInstance(player, dungeon));
-		} else {
-			return createResultNoElement(HttpCode.BadRequest);
-		}
+		// Player player = warehouseAdministration.getPlayer(idPlayer);
+		// Dungeon dungeon = warehouseDungeon.getDungeon(idDungeon);
+		//
+		// if (player != null && dungeon != null) {
+		// return createResultOneElement(HttpCode.OK, warehouseInstance.createInstance(player, dungeon));
+		// } else {
+		return createResultNoElement(HttpCode.BadRequest);
+		// }
 	}
 }

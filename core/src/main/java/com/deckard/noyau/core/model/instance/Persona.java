@@ -1,13 +1,16 @@
 package com.deckard.noyau.core.model.instance;
 
-import javax.persistence.Embeddable;
+import org.mongodb.morphia.annotations.Property;
 
-@Embeddable
 public class Persona {
 
+	@Property(value = "idPlayer")
 	private String idPlayer;
 
+	@Property(value = "x")
 	private Integer x;
+
+	@Property(value = "y")
 	private Integer y;
 
 	/**
