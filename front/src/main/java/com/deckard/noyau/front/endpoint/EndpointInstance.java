@@ -13,25 +13,22 @@ import com.deckard.noyau.core.http.AbstractEndpoint;
 import com.deckard.noyau.front.service.ServiceInstance;
 
 @Path("/instance")
+@Consumes("application/json;charset=UTF-8")
+@Produces("application/json;charset=UTF-8")
 public class EndpointInstance extends AbstractEndpoint {
-
-	private static final String MEDIA_TYPE = "application/json;charset=UTF-8";
 
 	@Inject
 	private ServiceInstance serviceInstance;
 
 	@GET
 	@Path("/{idInstance}")
-	@Consumes(MEDIA_TYPE)
-	@Produces(MEDIA_TYPE)
+
 	public Response get(@PathParam("idInstance") String idInstance) {
 		return createHttpResponse(serviceInstance.readInstance(idInstance));
 	}
 
 	@POST
 	@Path("/create")
-	@Consumes(MEDIA_TYPE)
-	@Produces(MEDIA_TYPE)
 	public Response create() throws Exception {
 		return createHttpResponse(
 				serviceInstance.createInstance("5863f999f6fd40029fd7116d", "585ae1645a0a5b25b806c82d"));

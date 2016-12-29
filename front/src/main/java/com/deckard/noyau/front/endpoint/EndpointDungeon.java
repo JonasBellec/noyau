@@ -15,9 +15,9 @@ import com.deckard.noyau.core.http.HttpCode;
 import com.deckard.noyau.front.service.ServiceDungeon;
 
 @Path("/dungeon")
+@Consumes("application/json;charset=UTF-8")
+@Produces("application/json;charset=UTF-8")
 public class EndpointDungeon extends AbstractEndpoint {
-
-	private static final String MEDIA_TYPE = "application/json;charset=UTF-8";
 
 	@Inject
 	private ServiceDungeon serviceDungeon;
@@ -30,15 +30,12 @@ public class EndpointDungeon extends AbstractEndpoint {
 
 	@GET
 	@Path("{idDungeon}")
-	@Produces(MEDIA_TYPE)
 	public Response get(@PathParam("idDungeon") String idDungeon) {
 		return createHttpResponse(serviceDungeon.getDungeon(idDungeon));
 	}
 
 	@POST
 	@Path("/create")
-	@Consumes(MEDIA_TYPE)
-	@Produces(MEDIA_TYPE)
 	public Response create() throws Exception {
 		return createHttpResponse(serviceDungeon.create());
 	}
