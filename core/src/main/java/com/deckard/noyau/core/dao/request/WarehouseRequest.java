@@ -40,6 +40,14 @@ public class WarehouseRequest {
 		}
 	}
 
+	public void updateRequest(AbstractRequest request) {
+		if (request.getId() != null) {
+			datastoreRequest.save(request);
+		} else {
+			throw new RuntimeException();
+		}
+	}
+
 	public <O extends AbstractRequest> O getNextRequestToProcess(Class<O> classRequest) {
 		return datastoreRequest.findAndModify(createQuery(classRequest), createUpdateOperations(classRequest));
 	}

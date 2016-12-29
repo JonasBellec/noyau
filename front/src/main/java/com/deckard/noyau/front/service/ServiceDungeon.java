@@ -21,7 +21,7 @@ public class ServiceDungeon extends AbstractService {
 		return createResultOneElement(HttpCode.OK, warehouseDungeon.getDungeon(idDungeon));
 	}
 
-	public Result readStage(String idStage) {
+	public Result getStage(String idStage) {
 		return createResultOneElement(HttpCode.OK, warehouseDungeon.getStage(idStage));
 	}
 

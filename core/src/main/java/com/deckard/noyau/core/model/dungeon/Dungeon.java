@@ -8,7 +8,7 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
-@Entity("dungeon")
+@Entity("Dungeon")
 public class Dungeon {
 
 	@Id

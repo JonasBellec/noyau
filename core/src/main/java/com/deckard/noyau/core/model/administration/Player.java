@@ -4,13 +4,13 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
-@Entity(value = "player")
+@Entity("Player")
 public class Player {
 	@Id
-	@Property(value = "_id")
+	@Property("_id")
 	private String id;
 
-	@Property(value = "name")
+	@Property("name")
 	private String name;
 
 	/**

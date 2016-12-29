@@ -12,6 +12,7 @@ import com.deckard.noyau.core.model.dungeon.Dungeon;
 import com.deckard.noyau.core.model.instance.Instance;
 import com.deckard.noyau.core.model.instance.Persona;
 import com.deckard.noyau.core.model.request.RequestCreateInstance;
+import com.deckard.noyau.core.model.request.Status;
 
 @ManagedBean
 public class RunnableCreateInstance implements Runnable {
@@ -32,28 +33,35 @@ public class RunnableCreateInstance implements Runnable {
 		RequestCreateInstance request = warehouseRequest.getNextRequestToProcess(RequestCreateInstance.class);
 
 		if (request != null) {
-			request.getTypeRequest();
+			Player player = warehouseAdministration.getPlayer(request.getIdPlayer());
+			Dungeon dungeon = warehouseDungeon.getDungeon(request.getIdDungeon());
+
+			if (player != null && dungeon != null) {
+				Instance instance = createInstance(player, dungeon);
+				request.setIdInstance(instance.getId());
+			}
+
+			request.setStatus(Status.COMPLETED);
+
+			warehouseRequest.updateRequest(request);
 		}
 	}
 
-	public void createInstance(String idPlayer, String idDungeon) {
+	public Instance createInstance(Player player, Dungeon dungeon) {
 
-		Player player = warehouseAdministration.getPlayer(idPlayer);
-		Dungeon dungeon = warehouseDungeon.getDungeon(idDungeon);
+		Instance instance = new Instance();
 
-		if (player != null && dungeon != null) {
-			Instance instance = new Instance();
+		instance.setIdDungeon(dungeon.getId());
 
-			instance.setIdDungeon(dungeon.getId());
+		Persona persona = new Persona();
+		persona.setIdPlayer(player.getId());
+		persona.setX(0);
+		persona.setY(0);
 
-			Persona persona = new Persona();
-			persona.setIdPlayer(player.getId());
-			persona.setX(0);
-			persona.setY(0);
+		instance.getListPersona().add(persona);
 
-			instance.getListPersona().add(persona);
+		warehouseInstance.saveInstance(instance);
 
-			warehouseInstance.saveInstance(instance);
-		}
+		return instance;
 	}
 }

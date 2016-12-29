@@ -44,6 +44,7 @@ function processKeyPress(scope, evt) {
 
 function refreshView(scope) {
 	requestAnimFrame(function() {
+		drawView(scope);
 		refreshView(scope);
 	});
 }
