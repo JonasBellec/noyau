@@ -23,10 +23,8 @@ public class Supervisor {
 	private Provider<RunnableCreateInstance> providerRunnableCreateInstance;
 
 	public void start() {
-		if (scheduledExecutorServiceMonitoring.isShutdown()) {
-			scheduledExecutorServiceMonitoring.scheduleAtFixedRate(providerRunnableCreateInstance.get(), 100, 1,
-					TimeUnit.SECONDS);
-		}
+		scheduledExecutorServiceMonitoring.scheduleAtFixedRate(providerRunnableCreateInstance.get(), 100, 1000,
+				TimeUnit.MILLISECONDS);
 	}
 
 	public void stop() {

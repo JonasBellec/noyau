@@ -13,7 +13,7 @@ public class RequestCreateInstance extends AbstractRequest {
 
 	@Override
 	public String getTypeRequest() {
-		return "createinstance";
+		return this.getClass().getSimpleName();
 	}
 
 	/**

@@ -7,8 +7,11 @@ import javax.inject.Singleton;
 
 import org.mongodb.morphia.AdvancedDatastore;
 import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
 
 import com.deckard.noyau.core.model.request.AbstractRequest;
+import com.deckard.noyau.core.model.request.Status;
 import com.deckard.noyau.core.producer.DatastoreRequest;
 import com.deckard.noyau.core.util.Util;
 
@@ -35,5 +38,19 @@ public class WarehouseRequest {
 		} else {
 			throw new RuntimeException();
 		}
+	}
+
+	public <O extends AbstractRequest> O getNextRequestToProcess(Class<O> classRequest) {
+		return datastoreRequest.findAndModify(createQuery(classRequest), createUpdateOperations(classRequest));
+	}
+
+	private <O extends AbstractRequest> Query<O> createQuery(Class<O> classRequest) {
+		Query<O> query = ((AdvancedDatastore) datastoreRequest).createQuery(classRequest);
+		return query.field("status").equal(Status.PENDING);
+	}
+
+	private <O extends AbstractRequest> UpdateOperations<O> createUpdateOperations(Class<O> classRequest) {
+		UpdateOperations<O> updateOperations = datastoreRequest.createUpdateOperations(classRequest);
+		return updateOperations.set("status", Status.PROCESSING);
 	}
 }

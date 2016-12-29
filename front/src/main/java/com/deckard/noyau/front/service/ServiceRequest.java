@@ -8,6 +8,7 @@ import com.deckard.noyau.core.http.AbstractService;
 import com.deckard.noyau.core.http.HttpCode;
 import com.deckard.noyau.core.http.Result;
 import com.deckard.noyau.core.model.request.RequestCreateInstance;
+import com.deckard.noyau.core.model.request.Status;
 
 @ManagedBean
 public class ServiceRequest extends AbstractService {
@@ -21,12 +22,12 @@ public class ServiceRequest extends AbstractService {
 
 	public Result createRequestCreateInstance(String idPlayer, String idDungeon) {
 		RequestCreateInstance requestCreateInstance = new RequestCreateInstance();
-
+		requestCreateInstance.setStatus(Status.PENDING);
 		requestCreateInstance.setIdDungeon(idDungeon);
 		requestCreateInstance.setIdPlayer(idPlayer);
 
 		warehouseRequest.saveRequest(requestCreateInstance);
 
-		return createResultOneElement(HttpCode.OK, requestCreateInstance.getId());
+		return createResultOneElement(HttpCode.OK, requestCreateInstance);
 	}
 }

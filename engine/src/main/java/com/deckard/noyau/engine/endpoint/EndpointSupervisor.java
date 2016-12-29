@@ -10,26 +10,23 @@ import javax.ws.rs.core.Response;
 import com.deckard.noyau.core.http.AbstractEndpoint;
 import com.deckard.noyau.engine.supervisor.ServiceSupervisor;
 
-@Path("/engine")
+@Path("/supervisor")
+@Consumes("application/json;charset=UTF-8")
+@Produces("application/json;charset=UTF-8")
 public class EndpointSupervisor extends AbstractEndpoint {
-
-	private static final String MEDIA_TYPE = "application/json;charset=UTF-8";
 
 	@Inject
 	private ServiceSupervisor serviceEngine;
 
 	@POST
 	@Path("/start")
-	@Consumes(MEDIA_TYPE)
-	@Produces(MEDIA_TYPE)
+
 	public Response start() throws Exception {
 		return createHttpResponse(serviceEngine.start());
 	}
 
 	@POST
 	@Path("/stop")
-	@Consumes(MEDIA_TYPE)
-	@Produces(MEDIA_TYPE)
 	public Response stop() throws Exception {
 		return createHttpResponse(serviceEngine.stop());
 	}

@@ -42,18 +42,15 @@ function loadConfiguration(scope, callback) {
 }
 
 function createInstance(scope, callback) {
-	post('instance/create', '', function(result) {
-		scope.game.instance = result;
-		callback();
+	post('request/createinstance', '', function(result) {
+		wait(result, scope, callback)
 	})
 }
 
 function wait(request, scope, callback) {
 	setTimeout(function() {
-		get('request', request.typeRequest + '/' + request.idRequest, function(result) {
-			callback();
-			
-			if(result.status == COMPLETED){
+		get('request', request.typeRequest + '/' + request.id, function(result) {
+			if(result.status != null && result.status == 'COMPLETED'){
 				getInstance(result.idInstance, scope, callback);
 			}else{
 				wait(request, scope, callback);

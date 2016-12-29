@@ -11,6 +11,7 @@ import com.deckard.noyau.core.model.administration.Player;
 import com.deckard.noyau.core.model.dungeon.Dungeon;
 import com.deckard.noyau.core.model.instance.Instance;
 import com.deckard.noyau.core.model.instance.Persona;
+import com.deckard.noyau.core.model.request.RequestCreateInstance;
 
 @ManagedBean
 public class RunnableCreateInstance implements Runnable {
@@ -28,8 +29,11 @@ public class RunnableCreateInstance implements Runnable {
 
 	@Override
 	public void run() {
-		int a = 5;
+		RequestCreateInstance request = warehouseRequest.getNextRequestToProcess(RequestCreateInstance.class);
 
+		if (request != null) {
+			request.getTypeRequest();
+		}
 	}
 
 	public void createInstance(String idPlayer, String idDungeon) {

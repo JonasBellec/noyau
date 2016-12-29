@@ -13,24 +13,21 @@ import com.deckard.noyau.core.http.AbstractEndpoint;
 import com.deckard.noyau.front.service.ServiceRequest;
 
 @Path("/request")
+@Consumes("application/json;charset=UTF-8")
+@Produces("application/json;charset=UTF-8")
 public class EndpointRequest extends AbstractEndpoint {
-
-	private static final String MEDIA_TYPE = "application/json;charset=UTF-8";
 
 	@Inject
 	private ServiceRequest serviceRequest;
 
 	@GET
 	@Path("/{typeRequest}/{idRequest}")
-
 	public Response get(@PathParam("typeRequest") String typeRequest, @PathParam("idRequest") String idRequest) {
 		return createHttpResponse(serviceRequest.getRequest(typeRequest, idRequest));
 	}
 
 	@POST
 	@Path("/createinstance")
-	@Consumes(MEDIA_TYPE)
-	@Produces(MEDIA_TYPE)
 	public Response createRequestCreateInstance() {
 		return createHttpResponse(
 				serviceRequest.createRequestCreateInstance("5863f999f6fd40029fd7116d", "585ae1645a0a5b25b806c82d"));
