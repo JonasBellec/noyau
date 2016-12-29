@@ -1,7 +1,10 @@
 package com.deckard.noyau.core.model.request;
 
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public abstract class AbstractRequest {
 
@@ -11,6 +14,12 @@ public abstract class AbstractRequest {
 
 	@Property(value = "idPlayer")
 	private String idPlayer;
+
+	@Embedded
+	private Status status;
+
+	@JsonProperty("typeRequest")
+	public abstract String getTypeRequest();
 
 	/**
 	 * @return the id
@@ -40,5 +49,20 @@ public abstract class AbstractRequest {
 	 */
 	public void setIdPlayer(String idPlayer) {
 		this.idPlayer = idPlayer;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public Status getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status
+	 *            the status to set
+	 */
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 }

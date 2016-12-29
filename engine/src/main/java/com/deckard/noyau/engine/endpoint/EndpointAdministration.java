@@ -1,4 +1,4 @@
-package com.deckard.noyau.front.endpoint;
+package com.deckard.noyau.engine.endpoint;
 
 import javax.ws.rs.Path;
 

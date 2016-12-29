@@ -4,13 +4,13 @@ import org.mongodb.morphia.annotations.Property;
 
 public class Persona {
 
-	@Property(value = "idPlayer")
+	@Property("idPlayer")
 	private String idPlayer;
 
-	@Property(value = "x")
+	@Property("x")
 	private Integer x;
 
-	@Property(value = "y")
+	@Property("y")
 	private Integer y;
 
 	/**

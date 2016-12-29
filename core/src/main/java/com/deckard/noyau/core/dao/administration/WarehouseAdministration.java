@@ -1,5 +1,6 @@
 package com.deckard.noyau.core.dao.administration;
 
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -10,6 +11,7 @@ import com.deckard.noyau.core.model.administration.Player;
 import com.deckard.noyau.core.producer.DatastoreAdministration;
 
 @Singleton
+@ManagedBean
 public class WarehouseAdministration {
 
 	@Inject

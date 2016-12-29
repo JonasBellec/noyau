@@ -48,6 +48,27 @@ function createInstance(scope, callback) {
 	})
 }
 
+function wait(request, scope, callback) {
+	setTimeout(function() {
+		get('request', request.typeRequest + '/' + request.idRequest, function(result) {
+			callback();
+			
+			if(result.status == COMPLETED){
+				getInstance(result.idInstance, scope, callback);
+			}else{
+				wait(request, scope, callback);
+			}
+		})
+	}, 1000);
+}
+
+function getInstance(idInstance, scope, callback) {
+	get('instance', idInstance, function(result) {
+		scope.game.instance = result;
+		callback();
+	})
+}
+
 function loadDungeon(scope, callback) {
 	get('dungeon', scope.game.instance.idDungeon, function(result) {
 		scope.game.dungeon = result;

@@ -19,7 +19,7 @@ public class DatabaseConnection {
 
 	private String baseName;
 	private String baseHost;
-	private String basePort;
+	private Integer basePort;
 
 	private String userName;
 	private String password;
@@ -31,7 +31,7 @@ public class DatabaseConnection {
 		this.userName = builder.userName;
 		this.password = builder.password;
 
-		if (StringUtils.isBlank(baseName) || StringUtils.isBlank(baseHost) || StringUtils.isBlank(basePort)) {
+		if (StringUtils.isBlank(baseName) || StringUtils.isBlank(baseHost) || basePort == null || basePort <= 0) {
 			throw new RuntimeException("Configuration");
 		}
 
@@ -52,7 +52,7 @@ public class DatabaseConnection {
 		}
 
 		final List<ServerAddress> listeServerAddress = new ArrayList<ServerAddress>();
-		listeServerAddress.add(new ServerAddress(baseHost, Integer.parseInt(basePort)));
+		listeServerAddress.add(new ServerAddress(baseHost, basePort));
 
 		if (credential == null) {
 			if (listeServerAddress.size() == 1) {
@@ -92,13 +92,13 @@ public class DatabaseConnection {
 		// required
 		private String baseName;
 		private String baseHost;
-		private String basePort;
+		private Integer basePort;
 
 		// optional
 		private String userName;
 		private String password;
 
-		public Builder(String baseName, String baseHost, String basePort) {
+		public Builder(String baseName, String baseHost, Integer basePort) {
 			this.baseName = baseName;
 			this.baseHost = baseHost;
 			this.basePort = basePort;

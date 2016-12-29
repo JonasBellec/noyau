@@ -1,5 +1,6 @@
 package com.deckard.noyau.front.service;
 
+import javax.annotation.ManagedBean;
 import javax.inject.Inject;
 
 import com.deckard.noyau.core.dao.dungeon.WarehouseDungeon;
@@ -10,6 +11,7 @@ import com.deckard.noyau.core.model.dungeon.Dungeon;
 import com.deckard.noyau.core.model.dungeon.Square;
 import com.deckard.noyau.core.model.dungeon.Stage;
 
+@ManagedBean
 public class ServiceDungeon extends AbstractService {
 
 	@Inject

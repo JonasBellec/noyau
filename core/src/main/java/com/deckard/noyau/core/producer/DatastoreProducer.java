@@ -3,8 +3,10 @@ package com.deckard.noyau.core.producer;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.enterprise.inject.Produces;
+import javax.inject.Singleton;
 
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
@@ -14,6 +16,8 @@ import com.deckard.noyau.core.model.dungeon.Dungeon;
 import com.deckard.noyau.core.model.instance.Instance;
 import com.deckard.noyau.core.model.request.AbstractRequest;
 
+@Singleton
+@ManagedBean
 public class DatastoreProducer {
 
 	private Morphia morphia;
@@ -25,7 +29,7 @@ public class DatastoreProducer {
 	private static final String REQUEST = "request";
 
 	private static final String HOST = "localhost";
-	private static final String PORT = "port";
+	private static final Integer PORT = 27017;
 
 	@PostConstruct
 	private void postConstruct() {

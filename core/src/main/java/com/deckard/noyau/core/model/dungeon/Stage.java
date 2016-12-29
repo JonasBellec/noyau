@@ -8,17 +8,17 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
-@Entity(value = "stage")
+@Entity("stage")
 public class Stage {
 
 	@Id
-	@Property(value = "_id")
+	@Property("_id")
 	private String id;
 
-	@Property(value = "title")
+	@Property("title")
 	private String title;
 
-	@Embedded(value = "listSquare")
+	@Embedded("listSquare")
 	private List<Square> listSquare;
 
 	public Stage() {

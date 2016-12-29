@@ -1,6 +1,6 @@
-package com.deckard.noyau.engine;
+package com.deckard.noyau.engine.supervisor.runnable;
 
-import javax.enterprise.inject.New;
+import javax.annotation.ManagedBean;
 import javax.inject.Inject;
 
 import com.deckard.noyau.core.dao.administration.WarehouseAdministration;
@@ -12,7 +12,7 @@ import com.deckard.noyau.core.model.dungeon.Dungeon;
 import com.deckard.noyau.core.model.instance.Instance;
 import com.deckard.noyau.core.model.instance.Persona;
 
-@New
+@ManagedBean
 public class RunnableCreateInstance implements Runnable {
 	@Inject
 	private WarehouseAdministration warehouseAdministration;

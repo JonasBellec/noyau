@@ -3,7 +3,6 @@ package com.deckard.noyau.front.endpoint;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -24,13 +23,6 @@ public class EndpointInstance extends AbstractEndpoint {
 	@Path("/{idInstance}")
 
 	public Response get(@PathParam("idInstance") String idInstance) {
-		return createHttpResponse(serviceInstance.readInstance(idInstance));
-	}
-
-	@POST
-	@Path("/create")
-	public Response create() throws Exception {
-		return createHttpResponse(
-				serviceInstance.createInstance("5863f999f6fd40029fd7116d", "585ae1645a0a5b25b806c82d"));
+		return createHttpResponse(serviceInstance.getInstance(idInstance));
 	}
 }

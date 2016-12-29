@@ -8,17 +8,17 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
-@Entity(value = "instance")
+@Entity("instance")
 public class Instance {
 
 	@Id
-	@Property(value = "_id")
+	@Property("_id")
 	private String id;
 
-	@Property(value = "idDungeon")
+	@Property("idDungeon")
 	private String idDungeon;
 
-	@Embedded(value = "listPersona")
+	@Embedded("listPersona")
 	private List<Persona> listPersona;
 
 	public Instance() {

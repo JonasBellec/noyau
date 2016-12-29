@@ -1,5 +1,6 @@
 package com.deckard.noyau.core.dao.dungeon;
 
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -12,6 +13,7 @@ import com.deckard.noyau.core.producer.DatastoreDungeon;
 import com.deckard.noyau.core.util.Util;
 
 @Singleton
+@ManagedBean
 public class WarehouseDungeon {
 
 	@Inject

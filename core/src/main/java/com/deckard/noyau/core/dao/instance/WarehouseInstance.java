@@ -1,5 +1,6 @@
 package com.deckard.noyau.core.dao.instance;
 
+import javax.annotation.ManagedBean;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -11,6 +12,7 @@ import com.deckard.noyau.core.producer.DatastoreInstance;
 import com.deckard.noyau.core.util.Util;
 
 @Singleton
+@ManagedBean
 public class WarehouseInstance {
 
 	@DatastoreInstance

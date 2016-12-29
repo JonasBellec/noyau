@@ -8,14 +8,14 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
-@Entity(value = "dungeon")
+@Entity("dungeon")
 public class Dungeon {
 
 	@Id
-	@Property(value = "_id")
+	@Property("_id")
 	private String id;
 
-	@Embedded(value = "listIdStage")
+	@Embedded("listIdStage")
 	private List<String> listIdStage;
 
 	public Dungeon() {
