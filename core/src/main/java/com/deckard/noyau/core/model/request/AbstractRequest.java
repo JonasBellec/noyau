@@ -1,6 +1,8 @@
 package com.deckard.noyau.core.model.request;
 
+import org.apache.commons.lang3.StringUtils;
 import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
@@ -23,7 +25,12 @@ public abstract class AbstractRequest {
 
 	@JsonProperty("typeRequest")
 	public String getTypeRequest() {
-		return this.getClass().getSimpleName();
+		Entity entity = this.getClass().getAnnotation(Entity.class);
+		if (entity != null && StringUtils.isNotBlank(entity.value())) {
+			return entity.value();
+		} else {
+			return this.getClass().getSimpleName();
+		}
 	}
 
 	/**

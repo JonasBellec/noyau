@@ -8,7 +8,7 @@ import com.deckard.noyau.core.dao.instance.WarehouseInstance;
 import com.deckard.noyau.core.dao.request.WarehouseRequest;
 import com.deckard.noyau.core.model.administration.Player;
 import com.deckard.noyau.core.model.instance.Instance;
-import com.deckard.noyau.core.model.request.RequestAction;
+import com.deckard.noyau.core.model.request.AbstractRequestAction;
 import com.deckard.noyau.core.model.request.Status;
 
 @ManagedBean
@@ -24,10 +24,10 @@ public class RunnableAction implements Runnable {
 
 	@Override
 	public void run() {
-		RequestAction request;
+		AbstractRequestAction request;
 
 		do {
-			request = warehouseRequest.getNextRequestToProcess(RequestAction.class);
+			request = warehouseRequest.getNextRequestToProcess(AbstractRequestAction.class);
 
 			if (request != null) {
 				Player player = warehouseAdministration.getPlayer(request.getIdPlayer());
