@@ -30,21 +30,26 @@ public class RunnableCreateInstance implements Runnable {
 
 	@Override
 	public void run() {
-		RequestCreateInstance request = warehouseRequest.getNextRequestToProcess(RequestCreateInstance.class);
 
-		if (request != null) {
-			Player player = warehouseAdministration.getPlayer(request.getIdPlayer());
-			Dungeon dungeon = warehouseDungeon.getDungeon(request.getIdDungeon());
+		RequestCreateInstance request;
 
-			if (player != null && dungeon != null) {
-				Instance instance = createInstance(player, dungeon);
-				request.setIdInstance(instance.getId());
+		do {
+			request = warehouseRequest.getNextRequestToProcess(RequestCreateInstance.class);
+
+			if (request != null) {
+				Player player = warehouseAdministration.getPlayer(request.getIdPlayer());
+				Dungeon dungeon = warehouseDungeon.getDungeon(request.getIdDungeon());
+
+				if (player != null && dungeon != null) {
+					Instance instance = createInstance(player, dungeon);
+					request.setIdInstance(instance.getId());
+				}
+
+				request.setStatus(Status.COMPLETED);
+
+				warehouseRequest.updateRequest(request);
 			}
-
-			request.setStatus(Status.COMPLETED);
-
-			warehouseRequest.updateRequest(request);
-		}
+		} while (request != null);
 	}
 
 	public Instance createInstance(Player player, Dungeon dungeon) {

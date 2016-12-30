@@ -8,14 +8,6 @@ public class RequestCreateInstance extends AbstractRequest {
 	@Property("idDungeon")
 	private String idDungeon;
 
-	@Property("idInstance")
-	private String idInstance;
-
-	@Override
-	public String getTypeRequest() {
-		return this.getClass().getSimpleName();
-	}
-
 	/**
 	 * @return the idDungeon
 	 */
@@ -29,20 +21,5 @@ public class RequestCreateInstance extends AbstractRequest {
 	 */
 	public void setIdDungeon(String idDungeon) {
 		this.idDungeon = idDungeon;
-	}
-
-	/**
-	 * @return the idInstance
-	 */
-	public String getIdInstance() {
-		return idInstance;
-	}
-
-	/**
-	 * @param idInstance
-	 *            the idInstance to set
-	 */
-	public void setIdInstance(String idInstance) {
-		this.idInstance = idInstance;
 	}
 }

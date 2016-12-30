@@ -15,11 +15,16 @@ public abstract class AbstractRequest {
 	@Property(value = "idPlayer")
 	private String idPlayer;
 
+	@Property("idInstance")
+	private String idInstance;
+
 	@Embedded
 	private Status status;
 
 	@JsonProperty("typeRequest")
-	public abstract String getTypeRequest();
+	public String getTypeRequest() {
+		return this.getClass().getSimpleName();
+	}
 
 	/**
 	 * @return the id
@@ -64,5 +69,20 @@ public abstract class AbstractRequest {
 	 */
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+
+	/**
+	 * @return the idInstance
+	 */
+	public String getIdInstance() {
+		return idInstance;
+	}
+
+	/**
+	 * @param idInstance
+	 *            the idInstance to set
+	 */
+	public void setIdInstance(String idInstance) {
+		this.idInstance = idInstance;
 	}
 }
