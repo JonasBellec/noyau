@@ -15,7 +15,7 @@ import com.deckard.noyau.core.model.request.RequestCreateInstance;
 import com.deckard.noyau.core.model.request.Status;
 
 @ManagedBean
-public class RunnableCreateInstance implements Runnable {
+public class ProcessAction implements Runnable {
 	@Inject
 	private WarehouseAdministration warehouseAdministration;
 
@@ -34,7 +34,7 @@ public class RunnableCreateInstance implements Runnable {
 		RequestCreateInstance request;
 
 		do {
-			request = warehouseRequest.getNextRequestToProcess(RequestCreateInstance.class);
+			request = warehouseRequest.getNextActionToPrepare(RequestCreateInstance.class);
 
 			if (request != null) {
 				Player player = warehouseAdministration.getPlayer(request.getIdPlayer());

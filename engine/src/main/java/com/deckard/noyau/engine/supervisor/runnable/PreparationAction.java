@@ -12,7 +12,7 @@ import com.deckard.noyau.core.model.request.AbstractRequestAction;
 import com.deckard.noyau.core.model.request.Status;
 
 @ManagedBean
-public class RunnableAction implements Runnable {
+public class PreparationAction implements Runnable {
 	@Inject
 	private WarehouseAdministration warehouseAdministration;
 
@@ -27,11 +27,15 @@ public class RunnableAction implements Runnable {
 		AbstractRequestAction request;
 
 		do {
-			request = warehouseRequest.getNextRequestToProcess(AbstractRequestAction.class);
+			request = warehouseRequest.getNextActionToPrepare(AbstractRequestAction.class);
 
 			if (request != null) {
 				Player player = warehouseAdministration.getPlayer(request.getIdPlayer());
 				Instance instance = warehouseInstance.getInstance(request.getIdInstance());
+				
+				if(player != null && instance != null){
+					
+				}
 
 				request.setStatus(Status.COMPLETED);
 
