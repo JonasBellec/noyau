@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.model.instance;
+package com.deckard.noyau.core.model.exposed;
 
 import org.mongodb.morphia.annotations.Property;
 

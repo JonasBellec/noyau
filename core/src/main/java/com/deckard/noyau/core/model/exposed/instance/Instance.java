@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.model.instance;
+package com.deckard.noyau.core.model.exposed.instance;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,8 +8,10 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
+import com.deckard.noyau.core.model.exposed.Persona;
+
 @Entity("Instance")
-public class Configuration {
+public class Instance {
 
 	@Id
 	@Property("_id")
@@ -18,10 +20,13 @@ public class Configuration {
 	@Property("idDungeon")
 	private String idDungeon;
 
+	@Property("idCreator")
+	private String idCreator;
+
 	@Embedded("listPersona")
 	private List<Persona> listPersona;
 
-	public Configuration() {
+	public Instance() {
 		listPersona = new ArrayList<>();
 	}
 

@@ -8,9 +8,9 @@ import com.deckard.noyau.core.dao.dungeon.WarehouseDungeon;
 import com.deckard.noyau.core.dao.instance.WarehouseInstance;
 import com.deckard.noyau.core.dao.request.WarehouseRequest;
 import com.deckard.noyau.core.model.administration.Player;
-import com.deckard.noyau.core.model.dungeon.Dungeon;
-import com.deckard.noyau.core.model.instance.Instance;
-import com.deckard.noyau.core.model.instance.Persona;
+import com.deckard.noyau.core.model.constant.dungeon.Dungeon;
+import com.deckard.noyau.core.model.exposed.Persona;
+import com.deckard.noyau.core.model.exposed.instance.Instance;
 import com.deckard.noyau.core.model.request.RequestCreateInstance;
 import com.deckard.noyau.core.model.request.Status;
 

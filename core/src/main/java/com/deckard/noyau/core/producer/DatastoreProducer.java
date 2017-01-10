@@ -12,8 +12,8 @@ import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
 import com.deckard.noyau.core.model.administration.Player;
-import com.deckard.noyau.core.model.dungeon.Dungeon;
-import com.deckard.noyau.core.model.instance.Instance;
+import com.deckard.noyau.core.model.constant.dungeon.Dungeon;
+import com.deckard.noyau.core.model.exposed.instance.Instance;
 import com.deckard.noyau.core.model.request.AbstractRequest;
 
 @Singleton

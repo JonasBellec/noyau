@@ -7,8 +7,8 @@ import javax.inject.Singleton;
 
 import org.mongodb.morphia.Datastore;
 
-import com.deckard.noyau.core.model.dungeon.Dungeon;
-import com.deckard.noyau.core.model.dungeon.Stage;
+import com.deckard.noyau.core.model.constant.dungeon.Dungeon;
+import com.deckard.noyau.core.model.constant.dungeon.Stage;
 import com.deckard.noyau.core.producer.DatastoreDungeon;
 import com.deckard.noyau.core.util.Util;
 

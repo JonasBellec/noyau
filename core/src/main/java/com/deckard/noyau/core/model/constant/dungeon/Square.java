@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.model.dungeon;
+package com.deckard.noyau.core.model.constant.dungeon;
 
 public class Square {
 

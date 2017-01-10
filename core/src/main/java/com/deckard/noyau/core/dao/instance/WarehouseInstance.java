@@ -7,7 +7,7 @@ import javax.inject.Singleton;
 
 import org.mongodb.morphia.Datastore;
 
-import com.deckard.noyau.core.model.instance.Instance;
+import com.deckard.noyau.core.model.exposed.instance.Instance;
 import com.deckard.noyau.core.producer.DatastoreInstance;
 import com.deckard.noyau.core.util.Util;
 
