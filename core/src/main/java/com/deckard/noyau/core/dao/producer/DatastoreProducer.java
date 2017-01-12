@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.producer;
+package com.deckard.noyau.core.dao.producer;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,11 +11,6 @@ import javax.inject.Singleton;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 
-import com.deckard.noyau.core.model.administration.Player;
-import com.deckard.noyau.core.model.constant.dungeon.Dungeon;
-import com.deckard.noyau.core.model.exposed.instance.Instance;
-import com.deckard.noyau.core.model.request.AbstractRequest;
-
 @Singleton
 @ManagedBean
 public class DatastoreProducer {
@@ -24,7 +19,8 @@ public class DatastoreProducer {
 	private Map<String, Datastore> mapDatastore;
 
 	private static final String ADMINISTRATION = "administration";
-	private static final String DUNGEON = "dungeon";
+	private static final String CONSTANT = "constant";
+	private static final String EXPOSED = "exposed";
 	private static final String INSTANCE = "instance";
 	private static final String REQUEST = "request";
 
@@ -34,30 +30,34 @@ public class DatastoreProducer {
 	@PostConstruct
 	private void postConstruct() {
 		morphia = new Morphia();
+		morphia.getMapper().getOptions().setMapSubPackages(true);
 		mapDatastore = new HashMap<>();
 
-		morphia.mapPackage(Player.class.getPackage().getName());
-		morphia.mapPackage(Dungeon.class.getPackage().getName());
-		morphia.mapPackage(Instance.class.getPackage().getName());
-		morphia.mapPackage(AbstractRequest.class.getPackage().getName());
-	}
-
-	@DatastoreDungeon
-	@Produces
-	public Datastore createDatastoreDungeon() {
-		return getDatastore(DUNGEON);
-	}
-
-	@DatastoreInstance
-	@Produces
-	public Datastore createDatastoreInstance() {
-		return getDatastore(INSTANCE);
+		morphia.mapPackage("com.deckard.noyau.core.model");
 	}
 
 	@DatastoreAdministration
 	@Produces
 	public Datastore createDatastoreAdministration() {
 		return getDatastore(ADMINISTRATION);
+	}
+
+	@DatastoreConstant
+	@Produces
+	public Datastore createDatastoreConstant() {
+		return getDatastore(CONSTANT);
+	}
+
+	@DatastoreExposed
+	@Produces
+	public Datastore createDatastoreExposed() {
+		return getDatastore(EXPOSED);
+	}
+
+	@DatastoreInstance
+	@Produces
+	public Datastore createDatastoreInstance() {
+		return getDatastore(INSTANCE);
 	}
 
 	@DatastoreRequest

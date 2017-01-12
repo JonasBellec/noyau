@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.producer;
+package com.deckard.noyau.core.dao.producer;
 
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
@@ -14,6 +14,6 @@ import javax.inject.Qualifier;
 @Qualifier
 @Retention(RUNTIME)
 @Target({ TYPE, METHOD, FIELD, PARAMETER })
-public @interface DatastoreInstance {
+public @interface DatastoreAdministration {
 
 }

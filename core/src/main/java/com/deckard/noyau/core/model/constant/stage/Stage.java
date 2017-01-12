@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.model.constant.dungeon;
+package com.deckard.noyau.core.model.constant.stage;
 
 import java.util.ArrayList;
 import java.util.List;

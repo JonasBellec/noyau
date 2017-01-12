@@ -4,13 +4,14 @@ import javax.annotation.ManagedBean;
 import javax.inject.Inject;
 
 import com.deckard.noyau.core.dao.administration.WarehouseAdministration;
-import com.deckard.noyau.core.dao.dungeon.WarehouseDungeon;
+import com.deckard.noyau.core.dao.constant.WarehouseConstant;
+import com.deckard.noyau.core.dao.exposed.WarehouseExposed;
 import com.deckard.noyau.core.dao.instance.WarehouseInstance;
 import com.deckard.noyau.core.dao.request.WarehouseRequest;
 import com.deckard.noyau.core.model.administration.Player;
 import com.deckard.noyau.core.model.constant.dungeon.Dungeon;
-import com.deckard.noyau.core.model.exposed.Persona;
-import com.deckard.noyau.core.model.exposed.instance.Instance;
+import com.deckard.noyau.core.model.exposed.game.Game;
+import com.deckard.noyau.core.model.instance.Instance;
 import com.deckard.noyau.core.model.request.RequestCreateInstance;
 import com.deckard.noyau.core.model.request.Status;
 
@@ -20,13 +21,16 @@ public class ProcessCreateInstance implements Runnable {
 	private WarehouseAdministration warehouseAdministration;
 
 	@Inject
-	private WarehouseRequest warehouseRequest;
+	private WarehouseConstant warehouseConstant;
+
+	@Inject
+	private WarehouseExposed warehouseExposed;
 
 	@Inject
 	private WarehouseInstance warehouseInstance;
 
 	@Inject
-	private WarehouseDungeon warehouseDungeon;
+	private WarehouseRequest warehouseRequest;
 
 	@Override
 	public void run() {
@@ -38,11 +42,12 @@ public class ProcessCreateInstance implements Runnable {
 
 			if (request != null) {
 				Player player = warehouseAdministration.getPlayer(request.getIdPlayer());
-				Dungeon dungeon = warehouseDungeon.getDungeon(request.getIdDungeon());
+				Dungeon dungeon = warehouseConstant.getDungeon(request.getIdDungeon());
 
 				if (player != null && dungeon != null) {
 					Instance instance = createInstance(player, dungeon);
-					request.setIdInstance(instance.getId());
+					Game game = createGame(player, dungeon);
+
 				}
 
 				request.setStatus(Status.COMPLETED);
@@ -56,17 +61,23 @@ public class ProcessCreateInstance implements Runnable {
 
 		Instance instance = new Instance();
 
+		instance.setIdPlayerCreator(player.getId());
 		instance.setIdDungeon(dungeon.getId());
-
-		Persona persona = new Persona();
-		persona.setIdPlayer(player.getId());
-		persona.setX(0);
-		persona.setY(0);
-
-		instance.getListPersona().add(persona);
 
 		warehouseInstance.saveInstance(instance);
 
 		return instance;
+	}
+
+	public Game createGame(Player player, Dungeon dungeon) {
+
+		Game game = new Game();
+
+		game.setIdPlayerCreator(player.getId());
+		game.setIdDungeon(dungeon.getId());
+
+		warehouseExposed.saveGame(game);
+
+		return game;
 	}
 }

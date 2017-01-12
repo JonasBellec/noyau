@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.producer;
+package com.deckard.noyau.core.dao.producer;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -12,15 +12,15 @@ import javax.ws.rs.core.Response;
 
 import com.deckard.noyau.core.http.AbstractEndpoint;
 import com.deckard.noyau.core.http.HttpCode;
-import com.deckard.noyau.front.service.ServiceDungeon;
+import com.deckard.noyau.front.service.ServiceConstant;
 
-@Path("/dungeon")
+@Path("/constant")
 @Consumes("application/json;charset=UTF-8")
 @Produces("application/json;charset=UTF-8")
-public class EndpointDungeon extends AbstractEndpoint {
+public class EndpointConstant extends AbstractEndpoint {
 
 	@Inject
-	private ServiceDungeon serviceDungeon;
+	private ServiceConstant serviceDungeon;
 
 	@HEAD
 	@Path("")
@@ -29,9 +29,15 @@ public class EndpointDungeon extends AbstractEndpoint {
 	}
 
 	@GET
-	@Path("{idDungeon}")
-	public Response get(@PathParam("idDungeon") String idDungeon) {
+	@Path("/dungeon/{idDungeon}")
+	public Response getDungeon(@PathParam("idDungeon") String idDungeon) {
 		return createHttpResponse(serviceDungeon.getDungeon(idDungeon));
+	}
+
+	@GET
+	@Path("/stage/{idStage}")
+	public Response getStage(@PathParam("idStage") String idStage) {
+		return createHttpResponse(serviceDungeon.getStage(idStage));
 	}
 
 	@POST

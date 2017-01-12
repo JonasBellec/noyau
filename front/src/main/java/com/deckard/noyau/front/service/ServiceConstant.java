@@ -3,26 +3,26 @@ package com.deckard.noyau.front.service;
 import javax.annotation.ManagedBean;
 import javax.inject.Inject;
 
-import com.deckard.noyau.core.dao.dungeon.WarehouseDungeon;
+import com.deckard.noyau.core.dao.constant.WarehouseConstant;
 import com.deckard.noyau.core.http.AbstractService;
 import com.deckard.noyau.core.http.HttpCode;
 import com.deckard.noyau.core.http.Result;
 import com.deckard.noyau.core.model.constant.dungeon.Dungeon;
-import com.deckard.noyau.core.model.constant.dungeon.Square;
-import com.deckard.noyau.core.model.constant.dungeon.Stage;
+import com.deckard.noyau.core.model.constant.stage.Square;
+import com.deckard.noyau.core.model.constant.stage.Stage;
 
 @ManagedBean
-public class ServiceDungeon extends AbstractService {
+public class ServiceConstant extends AbstractService {
 
 	@Inject
-	private WarehouseDungeon warehouseDungeon;
+	private WarehouseConstant warehouseConstant;
 
 	public Result getDungeon(String idDungeon) {
-		return createResultOneElement(HttpCode.OK, warehouseDungeon.getDungeon(idDungeon));
+		return createResultOneElement(HttpCode.OK, warehouseConstant.getDungeon(idDungeon));
 	}
 
 	public Result getStage(String idStage) {
-		return createResultOneElement(HttpCode.OK, warehouseDungeon.getStage(idStage));
+		return createResultOneElement(HttpCode.OK, warehouseConstant.getStage(idStage));
 	}
 
 	public Result create() throws Exception {
@@ -44,13 +44,13 @@ public class ServiceDungeon extends AbstractService {
 				}
 			}
 
-			warehouseDungeon.saveStage(stage);
+			warehouseConstant.saveStage(stage);
 
 			dungeon.getListIdStage().add(stage.getId());
 
 		}
 
-		warehouseDungeon.saveDungeon(dungeon);
+		warehouseConstant.saveDungeon(dungeon);
 
 		return createResultNoElement(HttpCode.OK);
 	}

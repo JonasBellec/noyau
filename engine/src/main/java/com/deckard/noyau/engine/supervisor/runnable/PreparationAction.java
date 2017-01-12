@@ -7,7 +7,7 @@ import com.deckard.noyau.core.dao.administration.WarehouseAdministration;
 import com.deckard.noyau.core.dao.instance.WarehouseInstance;
 import com.deckard.noyau.core.dao.request.WarehouseRequest;
 import com.deckard.noyau.core.model.administration.Player;
-import com.deckard.noyau.core.model.exposed.instance.Instance;
+import com.deckard.noyau.core.model.instance.Instance;
 import com.deckard.noyau.core.model.request.AbstractRequestAction;
 import com.deckard.noyau.core.model.request.Status;
 
@@ -32,9 +32,9 @@ public class PreparationAction implements Runnable {
 			if (request != null) {
 				Player player = warehouseAdministration.getPlayer(request.getIdPlayer());
 				Instance instance = warehouseInstance.getInstance(request.getIdInstance());
-				
-				if(player != null && instance != null){
-					
+
+				if (player != null && instance != null) {
+
 				}
 
 				request.setStatus(Status.COMPLETED);

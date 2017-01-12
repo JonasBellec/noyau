@@ -4,13 +4,11 @@ import javax.annotation.ManagedBean;
 import javax.inject.Inject;
 
 import com.deckard.noyau.core.dao.administration.WarehouseAdministration;
-import com.deckard.noyau.core.dao.dungeon.WarehouseDungeon;
-import com.deckard.noyau.core.dao.instance.WarehouseInstance;
+import com.deckard.noyau.core.dao.constant.WarehouseConstant;
+import com.deckard.noyau.core.dao.exposed.WarehouseExposed;
 import com.deckard.noyau.core.dao.request.WarehouseRequest;
 import com.deckard.noyau.core.model.administration.Player;
 import com.deckard.noyau.core.model.constant.dungeon.Dungeon;
-import com.deckard.noyau.core.model.exposed.Persona;
-import com.deckard.noyau.core.model.exposed.instance.Instance;
 import com.deckard.noyau.core.model.request.RequestCreateInstance;
 import com.deckard.noyau.core.model.request.Status;
 
@@ -23,10 +21,10 @@ public class ProcessAction implements Runnable {
 	private WarehouseRequest warehouseRequest;
 
 	@Inject
-	private WarehouseInstance warehouseInstance;
+	private WarehouseExposed warehouseInstance;
 
 	@Inject
-	private WarehouseDungeon warehouseDungeon;
+	private WarehouseConstant warehouseDungeon;
 
 	@Override
 	public void run() {
@@ -41,8 +39,6 @@ public class ProcessAction implements Runnable {
 				Dungeon dungeon = warehouseDungeon.getDungeon(request.getIdDungeon());
 
 				if (player != null && dungeon != null) {
-					Instance instance = createInstance(player, dungeon);
-					request.setIdInstance(instance.getId());
 				}
 
 				request.setStatus(Status.COMPLETED);
@@ -50,23 +46,5 @@ public class ProcessAction implements Runnable {
 				warehouseRequest.updateRequest(request);
 			}
 		} while (request != null);
-	}
-
-	public Instance createInstance(Player player, Dungeon dungeon) {
-
-		Instance instance = new Instance();
-
-		instance.setIdDungeon(dungeon.getId());
-
-		Persona persona = new Persona();
-		persona.setIdPlayer(player.getId());
-		persona.setX(0);
-		persona.setY(0);
-
-		instance.getListPersona().add(persona);
-
-		warehouseInstance.saveInstance(instance);
-
-		return instance;
 	}
 }
