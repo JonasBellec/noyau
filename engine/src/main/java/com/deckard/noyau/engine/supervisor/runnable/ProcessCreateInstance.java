@@ -11,6 +11,7 @@ import com.deckard.noyau.core.dao.request.WarehouseRequest;
 import com.deckard.noyau.core.model.administration.Player;
 import com.deckard.noyau.core.model.constant.dungeon.Dungeon;
 import com.deckard.noyau.core.model.exposed.game.Game;
+import com.deckard.noyau.core.model.exposed.game.Owner;
 import com.deckard.noyau.core.model.instance.Instance;
 import com.deckard.noyau.core.model.request.RequestCreateInstance;
 import com.deckard.noyau.core.model.request.Status;
@@ -45,9 +46,10 @@ public class ProcessCreateInstance implements Runnable {
 				Dungeon dungeon = warehouseConstant.getDungeon(request.getIdDungeon());
 
 				if (player != null && dungeon != null) {
-					Instance instance = createInstance(player, dungeon);
 					Game game = createGame(player, dungeon);
+					createInstance(player, dungeon, game);
 
+					request.setIdGame(game.getId());
 				}
 
 				request.setStatus(Status.COMPLETED);
@@ -57,12 +59,13 @@ public class ProcessCreateInstance implements Runnable {
 		} while (request != null);
 	}
 
-	public Instance createInstance(Player player, Dungeon dungeon) {
+	public Instance createInstance(Player player, Dungeon dungeon, Game game) {
 
 		Instance instance = new Instance();
 
 		instance.setIdPlayerCreator(player.getId());
 		instance.setIdDungeon(dungeon.getId());
+		instance.setIdGame(game.getId());
 
 		warehouseInstance.saveInstance(instance);
 
@@ -72,8 +75,12 @@ public class ProcessCreateInstance implements Runnable {
 	public Game createGame(Player player, Dungeon dungeon) {
 
 		Game game = new Game();
+		Owner owner = new Owner();
 
-		game.setIdPlayerCreator(player.getId());
+		owner.setIdPlayer(player.getId());
+		owner.setName(player.getName());
+
+		game.setOwner(owner);
 		game.setIdDungeon(dungeon.getId());
 
 		warehouseExposed.saveGame(game);

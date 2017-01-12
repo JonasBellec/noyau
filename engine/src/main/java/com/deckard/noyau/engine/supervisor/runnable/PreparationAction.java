@@ -4,10 +4,10 @@ import javax.annotation.ManagedBean;
 import javax.inject.Inject;
 
 import com.deckard.noyau.core.dao.administration.WarehouseAdministration;
-import com.deckard.noyau.core.dao.instance.WarehouseInstance;
+import com.deckard.noyau.core.dao.exposed.WarehouseExposed;
 import com.deckard.noyau.core.dao.request.WarehouseRequest;
 import com.deckard.noyau.core.model.administration.Player;
-import com.deckard.noyau.core.model.instance.Instance;
+import com.deckard.noyau.core.model.exposed.game.Game;
 import com.deckard.noyau.core.model.request.AbstractRequestAction;
 import com.deckard.noyau.core.model.request.Status;
 
@@ -20,7 +20,7 @@ public class PreparationAction implements Runnable {
 	private WarehouseRequest warehouseRequest;
 
 	@Inject
-	private WarehouseInstance warehouseInstance;
+	private WarehouseExposed warehouseExposed;
 
 	@Override
 	public void run() {
@@ -31,9 +31,9 @@ public class PreparationAction implements Runnable {
 
 			if (request != null) {
 				Player player = warehouseAdministration.getPlayer(request.getIdPlayer());
-				Instance instance = warehouseInstance.getInstance(request.getIdInstance());
+				Game game = warehouseExposed.getGame(request.getIdGame());
 
-				if (player != null && instance != null) {
+				if (player != null && game != null) {
 
 				}
 

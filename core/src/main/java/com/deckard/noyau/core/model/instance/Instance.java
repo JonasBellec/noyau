@@ -39,21 +39,6 @@ public class Instance {
 	}
 
 	/**
-	 * @return the idDungeon
-	 */
-	public String getIdDungeon() {
-		return idDungeon;
-	}
-
-	/**
-	 * @param idDungeon
-	 *            the idDungeon to set
-	 */
-	public void setIdDungeon(String idDungeon) {
-		this.idDungeon = idDungeon;
-	}
-
-	/**
 	 * @return the idPlayerCreator
 	 */
 	public String getIdPlayerCreator() {
@@ -66,5 +51,35 @@ public class Instance {
 	 */
 	public void setIdPlayerCreator(String idPlayerCreator) {
 		this.idPlayerCreator = idPlayerCreator;
+	}
+
+	/**
+	 * @return the idGame
+	 */
+	public String getIdGame() {
+		return idGame;
+	}
+
+	/**
+	 * @param idGame
+	 *            the idGame to set
+	 */
+	public void setIdGame(String idGame) {
+		this.idGame = idGame;
+	}
+
+	/**
+	 * @return the idDungeon
+	 */
+	public String getIdDungeon() {
+		return idDungeon;
+	}
+
+	/**
+	 * @param idDungeon
+	 *            the idDungeon to set
+	 */
+	public void setIdDungeon(String idDungeon) {
+		this.idDungeon = idDungeon;
 	}
 }

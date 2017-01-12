@@ -15,16 +15,13 @@ public class Game {
 	@Property("_id")
 	private String id;
 
-	@Property("idInstance")
-	private String idInstance;
-
-	@Property("idPlayerCreator")
-	private String idPlayerCreator;
-
 	@Property("idDungeon")
 	private String idDungeon;
 
-	@Embedded("listAvatar")
+	@Embedded("owner")
+	private Owner owner;
+
+	@Embedded("listParticipant")
 	private List<Participant> listParticipant;
 
 	public Game() {
@@ -62,33 +59,18 @@ public class Game {
 	}
 
 	/**
-	 * @return the idPlayerCreator
+	 * @return the owner
 	 */
-	public String getIdPlayerCreator() {
-		return idPlayerCreator;
+	public Owner getOwner() {
+		return owner;
 	}
 
 	/**
-	 * @param idPlayerCreator
-	 *            the idPlayerCreator to set
+	 * @param owner
+	 *            the owner to set
 	 */
-	public void setIdPlayerCreator(String idPlayerCreator) {
-		this.idPlayerCreator = idPlayerCreator;
-	}
-
-	/**
-	 * @return the idInstance
-	 */
-	public String getIdInstance() {
-		return idInstance;
-	}
-
-	/**
-	 * @param idInstance
-	 *            the idInstance to set
-	 */
-	public void setIdInstance(String idInstance) {
-		this.idInstance = idInstance;
+	public void setOwner(Owner owner) {
+		this.owner = owner;
 	}
 
 	/**
@@ -105,5 +87,4 @@ public class Game {
 	public void setListParticipant(List<Participant> listParticipant) {
 		this.listParticipant = listParticipant;
 	}
-
 }

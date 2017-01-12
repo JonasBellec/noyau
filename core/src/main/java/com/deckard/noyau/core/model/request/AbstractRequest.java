@@ -11,14 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public abstract class AbstractRequest {
 
 	@Id
-	@Property(value = "_id")
+	@Property("_id")
 	private String id;
 
-	@Property(value = "idPlayer")
+	@Property("idPlayer")
 	private String idPlayer;
 
-	@Property("idInstance")
-	private String idInstance;
+	@Property("idGame")
+	private String idGame;
 
 	@Embedded
 	private Status status;
@@ -79,17 +79,17 @@ public abstract class AbstractRequest {
 	}
 
 	/**
-	 * @return the idInstance
+	 * @return the idGame
 	 */
-	public String getIdInstance() {
-		return idInstance;
+	public String getIdGame() {
+		return idGame;
 	}
 
 	/**
-	 * @param idInstance
-	 *            the idInstance to set
+	 * @param idGame
+	 *            the idGame to set
 	 */
-	public void setIdInstance(String idInstance) {
-		this.idInstance = idInstance;
+	public void setIdGame(String idGame) {
+		this.idGame = idGame;
 	}
 }
