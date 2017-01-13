@@ -8,8 +8,8 @@ import com.deckard.noyau.core.http.AbstractService;
 import com.deckard.noyau.core.http.HttpCode;
 import com.deckard.noyau.core.http.Result;
 import com.deckard.noyau.core.model.constant.dungeon.Dungeon;
-import com.deckard.noyau.core.model.constant.stage.Square;
-import com.deckard.noyau.core.model.constant.stage.Stage;
+import com.deckard.noyau.core.model.constant.dungeon.Square;
+import com.deckard.noyau.core.model.constant.dungeon.Stage;
 
 @ManagedBean
 public class ServiceConstant extends AbstractService {

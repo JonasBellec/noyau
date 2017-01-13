@@ -12,7 +12,7 @@ import org.mongodb.morphia.query.UpdateOperations;
 
 import com.deckard.noyau.core.dao.producer.DatastoreRequest;
 import com.deckard.noyau.core.model.request.AbstractRequest;
-import com.deckard.noyau.core.model.request.Status;
+import com.deckard.noyau.core.model.request.AbstractRequest.Status;
 import com.deckard.noyau.core.util.Util;
 
 @Singleton

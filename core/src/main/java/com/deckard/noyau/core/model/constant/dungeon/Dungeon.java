@@ -15,11 +15,11 @@ public class Dungeon {
 	@Property("_id")
 	private String id;
 
-	@Embedded("listIdStage")
-	private List<String> listIdStage;
+	@Embedded("listStage")
+	private List<Stage> listStage;
 
 	public Dungeon() {
-		listIdStage = new ArrayList<>();
+		listStage = new ArrayList<>();
 	}
 
 	public String getId() {
@@ -31,17 +31,18 @@ public class Dungeon {
 	}
 
 	/**
-	 * @return the listIdStage
+	 * @return the listStage
 	 */
-	public List<String> getListIdStage() {
-		return listIdStage;
+	public List<Stage> getListStage() {
+		return listStage;
 	}
 
 	/**
-	 * @param listIdStage
-	 *            the listIdStage to set
+	 * @param listStage
+	 *            the listStage to set
 	 */
-	public void setListIdStage(List<String> listIdStage) {
-		this.listIdStage = listIdStage;
+	public void setListStage(List<Stage> listStage) {
+		this.listStage = listStage;
 	}
+
 }

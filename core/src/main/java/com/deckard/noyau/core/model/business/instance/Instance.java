@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.model.instance;
+package com.deckard.noyau.core.model.business.instance;
 
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -19,9 +19,6 @@ public class Instance {
 
 	@Property("idDungeon")
 	private String idDungeon;
-
-	public Instance() {
-	}
 
 	/**
 	 * @return the id

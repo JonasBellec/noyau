@@ -1,8 +1,5 @@
 package com.deckard.noyau.core.model.exposed.game;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
@@ -18,14 +15,10 @@ public class Game {
 	@Property("idDungeon")
 	private String idDungeon;
 
-	@Embedded("owner")
-	private Owner owner;
-
-	@Embedded("listParticipant")
-	private List<Participant> listParticipant;
+	@Embedded("creator")
+	private ExposedPlayer creator;
 
 	public Game() {
-		listParticipant = new ArrayList<>();
 	}
 
 	/**
@@ -59,32 +52,17 @@ public class Game {
 	}
 
 	/**
-	 * @return the owner
+	 * @return the creator
 	 */
-	public Owner getOwner() {
-		return owner;
+	public ExposedPlayer getCreator() {
+		return creator;
 	}
 
 	/**
-	 * @param owner
-	 *            the owner to set
+	 * @param creator
+	 *            the creator to set
 	 */
-	public void setOwner(Owner owner) {
-		this.owner = owner;
-	}
-
-	/**
-	 * @return the listParticipant
-	 */
-	public List<Participant> getListParticipant() {
-		return listParticipant;
-	}
-
-	/**
-	 * @param listParticipant
-	 *            the listParticipant to set
-	 */
-	public void setListParticipant(List<Participant> listParticipant) {
-		this.listParticipant = listParticipant;
+	public void setCreator(ExposedPlayer creator) {
+		this.creator = creator;
 	}
 }

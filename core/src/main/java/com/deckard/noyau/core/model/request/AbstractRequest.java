@@ -10,6 +10,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public abstract class AbstractRequest {
 
+	public enum Status {
+		PENDING,
+		PROCESSING,
+		COMPLETED
+	}
+
 	@Id
 	@Property("_id")
 	private String id;
