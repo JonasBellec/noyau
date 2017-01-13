@@ -1,5 +1,7 @@
 package com.deckard.noyau.core.model.exposed.view;
 
+import java.util.List;
+
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Property;
 
@@ -16,4 +18,7 @@ public class View {
 
 	@Property("idPlayer")
 	private String idPlayer;
+
+	private String currentStage;
+	private List<String> listSquare;
 }

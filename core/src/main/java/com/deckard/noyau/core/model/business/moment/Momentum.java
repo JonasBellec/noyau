@@ -9,8 +9,8 @@ import org.mongodb.morphia.annotations.Property;
 
 import com.deckard.noyau.core.model.constant.dungeon.Stage;
 
-@Entity("Moment")
-public class Moment {
+@Entity("Momentum")
+public class Momentum {
 	public enum Status {
 		PROCESSING,
 		CURRENT,
