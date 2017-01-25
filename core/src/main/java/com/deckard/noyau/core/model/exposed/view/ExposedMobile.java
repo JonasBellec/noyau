@@ -3,9 +3,9 @@ package com.deckard.noyau.core.model.exposed.view;
 import org.mongodb.morphia.annotations.Property;
 
 public abstract class ExposedMobile {
-	@Property("x")
+	@Property
 	private Integer x;
 
-	@Property("y")
+	@Property
 	private Integer y;
 }

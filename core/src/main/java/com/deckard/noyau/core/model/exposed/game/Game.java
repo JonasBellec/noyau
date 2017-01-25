@@ -9,13 +9,12 @@ import org.mongodb.morphia.annotations.Property;
 public class Game {
 
 	@Id
-	@Property("_id")
 	private String id;
 
-	@Property("idDungeon")
+	@Property
 	private String idDungeon;
 
-	@Embedded("creator")
+	@Embedded
 	private ExposedPlayer creator;
 
 	public Game() {

@@ -8,10 +8,10 @@ import org.mongodb.morphia.annotations.Property;
 
 public class Stage {
 
-	@Property("name")
+	@Property
 	private String name;
 
-	@Embedded("listSquare")
+	@Embedded
 	private List<Square> listSquare;
 
 	public Stage() {

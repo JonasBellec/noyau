@@ -17,10 +17,9 @@ public class Stack {
 	}
 
 	@Id
-	@Property("_id")
 	private String id;
 
-	@Property("idInstance")
+	@Property
 	private String idInstance;
 
 	@Embedded

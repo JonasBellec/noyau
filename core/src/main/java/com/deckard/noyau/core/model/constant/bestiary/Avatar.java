@@ -1,11 +1,11 @@
-package com.deckard.noyau.core.model.business.moment;
+package com.deckard.noyau.core.model.constant.bestiary;
 
 import org.mongodb.morphia.annotations.Property;
 
 public class Avatar extends Mobile {
-	@Property("idPlayer")
+	@Property
 	private String idPlayer;
 
-	@Property("idPersona")
+	@Property
 	private String idPersona;
 }

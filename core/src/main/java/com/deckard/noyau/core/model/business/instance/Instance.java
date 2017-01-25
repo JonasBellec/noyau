@@ -8,16 +8,15 @@ import org.mongodb.morphia.annotations.Property;
 public class Instance {
 
 	@Id
-	@Property("_id")
 	private String id;
 
-	@Property("idPlayerCreator")
+	@Property
 	private String idPlayerCreator;
 
-	@Property("idGame")
+	@Property
 	private String idGame;
 
-	@Property("idDungeon")
+	@Property
 	private String idDungeon;
 
 	/**

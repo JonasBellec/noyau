@@ -7,6 +7,7 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
+import com.deckard.noyau.core.model.constant.bestiary.Mobile;
 import com.deckard.noyau.core.model.constant.dungeon.Stage;
 
 @Entity("Momentum")
@@ -18,15 +19,17 @@ public class Momentum {
 	}
 
 	@Id
-	@Property("_id")
 	private String id;
 
-	@Property("idInstance")
+	@Property
 	private String idInstance;
 
-	@Embedded("status")
+	@Embedded
 	private Status status;
 
-	@Embedded("listStage")
+	@Embedded
 	private List<Stage> listStage;
+
+	@Embedded
+	private List<Mobile> listMobile;
 }

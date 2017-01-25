@@ -7,10 +7,9 @@ import org.mongodb.morphia.annotations.Property;
 @Entity("Player")
 public class Player {
 	@Id
-	@Property("_id")
 	private String id;
 
-	@Property("name")
+	@Property
 	private String name;
 
 	/**

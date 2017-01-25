@@ -1,11 +1,11 @@
-package com.deckard.noyau.core.model.business.moment;
+package com.deckard.noyau.core.model.constant.bestiary;
 
 import org.mongodb.morphia.annotations.Property;
 
 public abstract class Mobile {
-	@Property("x")
+	@Property
 	private Integer x;
 
-	@Property("y")
+	@Property
 	private Integer y;
 }

@@ -2,23 +2,30 @@ package com.deckard.noyau.core.model.exposed.view;
 
 import java.util.List;
 
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
+
+import com.deckard.noyau.core.model.constant.dungeon.Stage;
 
 @Entity("View")
 public class View {
-	@Property("_id")
+	@Id
 	private String id;
 
-	@Property("idInstance")
+	@Property
 	private String idInstance;
 
-	@Property("idGame")
+	@Property
 	private String idGame;
 
-	@Property("idPlayer")
+	@Property
 	private String idPlayer;
 
+	@Property
 	private String currentStage;
-	private List<String> listSquare;
+
+	@Embedded
+	private List<Stage> listStage;
 }

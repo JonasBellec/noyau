@@ -1,10 +1,23 @@
 package com.deckard.noyau.core.model.constant.dungeon;
 
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Property;
+
+import com.deckard.noyau.core.model.constant.bestiary.Mobile;
+
 public class Square {
 
-	private Integer squareType;
+	@Property
 	private Integer x;
+
+	@Property
 	private Integer y;
+
+	@Property
+	private Integer squareType;
+
+	@Embedded
+	private Mobile mobile;
 
 	public Integer getSquareType() {
 		return squareType;

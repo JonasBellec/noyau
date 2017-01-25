@@ -4,10 +4,10 @@ import org.mongodb.morphia.annotations.Property;
 
 public class ExposedPlayer {
 
-	@Property("idPlayer")
+	@Property
 	private String idPlayer;
 
-	@Property("name")
+	@Property
 	private String name;
 
 	/**
