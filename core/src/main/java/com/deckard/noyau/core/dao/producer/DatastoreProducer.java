@@ -19,9 +19,9 @@ public class DatastoreProducer {
 	private Map<String, Datastore> mapDatastore;
 
 	private static final String ADMINISTRATION = "administration";
+	private static final String BUSINESS = "business";
 	private static final String CONSTANT = "constant";
 	private static final String EXPOSED = "exposed";
-	private static final String INSTANCE = "instance";
 	private static final String REQUEST = "request";
 
 	private static final String HOST = "localhost";
@@ -54,10 +54,10 @@ public class DatastoreProducer {
 		return getDatastore(EXPOSED);
 	}
 
-	@DatastoreInstance
+	@DatastoreBusiness
 	@Produces
-	public Datastore createDatastoreInstance() {
-		return getDatastore(INSTANCE);
+	public Datastore createDatastoreBusiness() {
+		return getDatastore(BUSINESS);
 	}
 
 	@DatastoreRequest

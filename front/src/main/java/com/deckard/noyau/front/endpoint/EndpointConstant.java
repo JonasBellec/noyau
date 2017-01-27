@@ -34,12 +34,6 @@ public class EndpointConstant extends AbstractEndpoint {
 		return createHttpResponse(serviceDungeon.getDungeon(idDungeon));
 	}
 
-	@GET
-	@Path("/stage/{idStage}")
-	public Response getStage(@PathParam("idStage") String idStage) {
-		return createHttpResponse(serviceDungeon.getStage(idStage));
-	}
-
 	@POST
 	@Path("/create")
 	public Response create() throws Exception {

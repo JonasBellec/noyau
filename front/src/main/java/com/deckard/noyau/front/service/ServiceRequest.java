@@ -7,8 +7,8 @@ import com.deckard.noyau.core.dao.request.WarehouseRequest;
 import com.deckard.noyau.core.http.AbstractService;
 import com.deckard.noyau.core.http.HttpCode;
 import com.deckard.noyau.core.http.Result;
+import com.deckard.noyau.core.model.request.AbstractRequest.Status;
 import com.deckard.noyau.core.model.request.RequestCreateInstance;
-import com.deckard.noyau.core.model.request.Status;
 
 @ManagedBean
 public class ServiceRequest extends AbstractService {

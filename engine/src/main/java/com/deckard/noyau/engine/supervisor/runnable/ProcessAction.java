@@ -9,8 +9,8 @@ import com.deckard.noyau.core.dao.exposed.WarehouseExposed;
 import com.deckard.noyau.core.dao.request.WarehouseRequest;
 import com.deckard.noyau.core.model.administration.Player;
 import com.deckard.noyau.core.model.constant.dungeon.Dungeon;
+import com.deckard.noyau.core.model.request.AbstractRequest.Status;
 import com.deckard.noyau.core.model.request.RequestCreateInstance;
-import com.deckard.noyau.core.model.request.Status;
 
 @ManagedBean
 public class ProcessAction implements Runnable {
@@ -32,7 +32,7 @@ public class ProcessAction implements Runnable {
 		RequestCreateInstance request;
 
 		do {
-			request = warehouseRequest.getNextActionToPrepare(RequestCreateInstance.class);
+			request = warehouseRequest.getNextRequestToProcess(RequestCreateInstance.class);
 
 			if (request != null) {
 				Player player = warehouseAdministration.getPlayer(request.getIdPlayer());

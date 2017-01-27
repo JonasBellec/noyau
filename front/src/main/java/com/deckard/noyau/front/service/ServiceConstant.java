@@ -21,17 +21,13 @@ public class ServiceConstant extends AbstractService {
 		return createResultOneElement(HttpCode.OK, warehouseConstant.getDungeon(idDungeon));
 	}
 
-	public Result getStage(String idStage) {
-		return createResultOneElement(HttpCode.OK, warehouseConstant.getStage(idStage));
-	}
-
 	public Result create() throws Exception {
 
 		Dungeon dungeon = new Dungeon();
 
 		for (int i = 0; i < 10; i++) {
 			Stage stage = new Stage();
-			stage.setTitle(String.valueOf(i));
+			stage.setName(String.valueOf(i));
 
 			for (int j = 0; j < 10; j++) {
 				for (int k = 0; k < 10; k++) {
@@ -44,9 +40,7 @@ public class ServiceConstant extends AbstractService {
 				}
 			}
 
-			warehouseConstant.saveStage(stage);
-
-			dungeon.getListIdStage().add(stage.getId());
+			dungeon.getListStage().add(stage);
 
 		}
 

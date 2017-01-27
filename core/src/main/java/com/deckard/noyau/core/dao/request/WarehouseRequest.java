@@ -48,7 +48,7 @@ public class WarehouseRequest {
 		}
 	}
 
-	public <O extends AbstractRequest> O getNextActionToPrepare(Class<O> classRequest) {
+	public <O extends AbstractRequest> O getNextRequestToProcess(Class<O> classRequest) {
 		return datastoreRequest.findAndModify(createQuery(classRequest), createUpdateOperations(classRequest));
 	}
 
