@@ -13,7 +13,8 @@ import org.mongodb.morphia.Datastore;
 import com.deckard.noyau.core.dao.producer.DatastoreBusiness;
 import com.deckard.noyau.core.model.administration.Player;
 import com.deckard.noyau.core.model.business.instance.Instance;
-import com.deckard.noyau.core.model.business.stack.Action;
+import com.deckard.noyau.core.model.business.sequence.Action;
+import com.deckard.noyau.core.model.business.sequence.Sequence;
 import com.deckard.noyau.core.model.constant.dungeon.Dungeon;
 import com.deckard.noyau.core.model.exposed.game.Game;
 import com.deckard.noyau.core.util.Util;
@@ -54,16 +55,23 @@ public class WarehouseBusiness {
 		}
 	}
 
-	public void addActionToNextStack(String idGame, Action action) {
+	public void addActionToSequence(String idGame, Action action, Integer delayInTick) {
 		StorageBusiness storageBusiness = mapStorageBusinessByIdGame.get(idGame);
 
 		if (storageBusiness != null) {
-			storageBusiness.addActionToNextStack(action);
+			storageBusiness.addActionToSequence(action, delayInTick);
 		} else {
 			throw new RuntimeException();
 		}
 	}
 
-	public void getNextStackToProcess(String idInstance) {
+	public Sequence popNextStackToProcess(String idGame) {
+		StorageBusiness storageBusiness = mapStorageBusinessByIdGame.get(idGame);
+
+		if (storageBusiness != null) {
+			return storageBusiness.popNextSequenceToProcess();
+		} else {
+			throw new RuntimeException();
+		}
 	}
 }

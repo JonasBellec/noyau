@@ -1,4 +1,4 @@
-package com.deckard.noyau.core.model.business.moment;
+package com.deckard.noyau.core.model.business.momentum;
 
 import java.util.List;
 

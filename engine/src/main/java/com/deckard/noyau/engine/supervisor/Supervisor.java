@@ -10,8 +10,8 @@ import javax.inject.Provider;
 import javax.inject.Singleton;
 
 import com.deckard.noyau.engine.supervisor.runnable.PreparationAction;
-import com.deckard.noyau.engine.supervisor.runnable.ProcessAction;
 import com.deckard.noyau.engine.supervisor.runnable.ProcessCreateInstance;
+import com.deckard.noyau.engine.supervisor.runnable.ProcessSequence;
 
 @Singleton
 @ManagedBean
@@ -26,13 +26,22 @@ public class Supervisor {
 	private Provider<PreparationAction> providerPreparationAction;
 
 	@Inject
-	private Provider<ProcessAction> providerProcessAction;
+	private Provider<ProcessSequence> providerProcessSequence;
 	
+	List<ProcessSequence>
+
 	public void start() {
-		scheduledExecutorService.scheduleAtFixedRate(providerPreparationAction.get(), 100, 100, TimeUnit.MILLISECONDS);
-		scheduledExecutorService.scheduleAtFixedRate(providerProcessAction.get(), 100, 1000, TimeUnit.MILLISECONDS);
-		scheduledExecutorService.scheduleAtFixedRate(providerProcessCreateInstance.get(), 100, 1000,
-				TimeUnit.MILLISECONDS);
+
+		ProcessCreateInstance processCreateInstance = providerProcessCreateInstance.get();
+		PreparationAction preparationAction = providerPreparationAction.get();
+
+		scheduledExecutorService.scheduleAtFixedRate(preparationAction, 100, 200, TimeUnit.MILLISECONDS);
+		scheduledExecutorService.scheduleAtFixedRate(processCreateInstance, 1000, 1000, TimeUnit.MILLISECONDS);
+
+		for (int i = 0; i < 10; i++) {
+			ProcessSequence processSequence = providerProcessSequence.get();
+			scheduledExecutorService.scheduleAtFixedRate(processSequence, 100 * i, 1000, TimeUnit.MILLISECONDS);
+		}
 	}
 
 	public void stop() {

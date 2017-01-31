@@ -7,6 +7,7 @@ import com.deckard.noyau.core.dao.administration.WarehouseAdministration;
 import com.deckard.noyau.core.dao.business.WarehouseBusiness;
 import com.deckard.noyau.core.dao.request.WarehouseRequest;
 import com.deckard.noyau.core.model.administration.Player;
+import com.deckard.noyau.core.model.business.sequence.Action;
 import com.deckard.noyau.core.model.request.AbstractRequest.Status;
 import com.deckard.noyau.core.model.request.AbstractRequestAction;
 
@@ -19,7 +20,7 @@ public class PreparationAction implements Runnable {
 	private WarehouseRequest warehouseRequest;
 
 	@Inject
-	private WarehouseBusiness warehouseInstance;
+	private WarehouseBusiness warehouseBusiness;
 
 	@Override
 	public void run() {
@@ -32,13 +33,16 @@ public class PreparationAction implements Runnable {
 				Player player = warehouseAdministration.getPlayer(request.getIdPlayer());
 
 				if (player != null) {
-					warehouseInstance.addActionToNextStack(request.getIdGame(), action);
+					warehouseBusiness.addActionToSequence(request.getIdGame(), createActionFromRequest(request), 1);
 				}
 
 				request.setStatus(Status.COMPLETED);
-
 				warehouseRequest.updateRequest(request);
 			}
 		} while (request != null);
+	}
+
+	private Action createActionFromRequest(AbstractRequestAction request) {
+		return null;
 	}
 }
